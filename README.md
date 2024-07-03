@@ -5,15 +5,15 @@
 **Title:** High-resolution immune atlas of murine healthy prostate and prostate cancer from neoplasia to adenocarcinoma stage in the inducible PTEN(i)pe-/- mice
 
 **Authors:** 
-Despoina Pervizou 1, Joanna De Chiara 1, Lionel Spinelli 1, Gilles Laverny, Daniel Metzger, Bernard Malissen, Sandrine Henri 1,*
+Despoina Pervizou1, Joanna De Chiara1, Lionel Spinelli1, Lionel Chasson1, Frédéric Fiore, Marc Bajénoff1, Bernard Malissen1, Daniel Metzger, Gilles Laverny and Sandrine Henri1*
 
 1 Aix-Marseille Univ, Centre National de la Recherche Scientifique (CNRS), Institut National de la Santé et de la Recherche Médicale (INSERM), Centre d'Immunologie de Marseille-Luminy (CIML), Marseille, France.
-* Corresponding Author
+* Corresponding author
 
-% Corresponding author e-mail: sandrine.henri@univ-tours.fr
+% Corresponding author e-mail: sandrine.henri@inserm.fr
 
 **Summary:**
-To establish a high-resolution immune atlas of healthy prostate and prostate cancer we performed scRNA-seq on sorted tissue resident CD45+ immune cells from the inducible adult PTEN(i)pe-/- mice at the Prostatic Intraepithelila Neoplasia stage (PIN) and Adenocarcinoma stages, and age-matched healthy PTENL2/L2 control individuals at 3months and 9months post tamoxifen administration respectively. Few minutes prior sacrifice, mice were injected intravenously with fluorescent anti-CD45.2 antibodies to perform blood/tissue partitioning, allowing to exclude cells present in the vasculature and ensure to study solely the immune cells present in prostate parenchyma. Cells were extracted from DLV prostate lobes by enzymatic digestion. Prostate samples from three PTEN(i)pe−/− mice at 3months post tamoxifen were pooled prior to sorting. Similarly, prostate samples from five  sex-matched PTENL2/L2 control littermates at 3months post-tamoxifen were also pooled prior to sorting. The same approach was applied for the 9months samples of PTEN(i)pe−/− and control mice respectively. Tissue resident CD45+ immune cells were sorted by fluorescence-activated cell sorting (FACS). As we found previously that neutrophils were prevalent within the leukocyte infiltrate from PIN to adenocarcinoma stages of Pten(i)pe−/−prostate, neutrophils were sorted separately from the other CD45+ immune cells and cells were mixed again at a 25% ratio of neutrophils with 75% of CD45+ non neutrophil immune cells prior 10X Genomics Chromium System encapsulation and scRNAsequencing. We included 8 independent samples encompassing 2 replicates of PtenL2/L2 control 3 months, PtenL2/L2 control 9 months, Pten(i)pe−/− 3 months PIN and Pten(i)pe−/− 9 months adenocarcinoma. 
+To establish a high-resolution immune atlas of healthy prostate and prostate cancer we performed scRNA-seq on sorted tissue-resident CD45+ immune cells from the inducible adult PTEN(i)pe-/- mice at the Prostatic Intraepithelial Neoplasia stage (PIN) and Adenocarcinoma stages, and age-matched healthy PTENL2/L2 control mice at 3 months and 9 months post-tamoxifen administration respectively. A few minutes prior sacrifice, mice were injected intravenously with fluorescent anti-CD45.2 antibodies to perform blood/tissue partitioning, allowing to exclude cells present in the vasculature and ensure to study solely of the immune cells present in prostate parenchyma. Cells were extracted from DLV prostate lobes by enzymatic digestion. Prostate samples from three PTEN(i)pe−/− mice at 3 months post-tamoxifen were pooled prior to sorting. Similarly, prostate samples from five  sex-matched PTENL2/L2 control littermates at 3 months post-tamoxifen were also pooled prior to sorting. The same approach was applied for the 9 months samples of PTEN(i)pe−/− and control mice respectively. Tissue resident CD45+ immune cells were sorted by fluorescence-activated cell sorting (FACS). As we found previously that neutrophils were prevalent within the leukocyte infiltrate from PIN to adenocarcinoma stages of Pten(i)pe−/−prostate, neutrophils were sorted separately from the other CD45+ immune cells and cells were mixed again at a ratio of 25% neutrophils to 75% CD45+ non-neutrophil immune cells prior 10X Genomics Chromium System encapsulation and scRNA sequencing. We included 8 independent samples encompassing 2 replicates of PtenL2/L2 control at 3 months, PtenL2/L2 control at 9 months, Pten(i)pe−/− at 3 months PIN and Pten(i)pe−/− at 9 months adenocarcinoma. 
 
 **DOI:**
 
@@ -21,19 +21,19 @@ To establish a high-resolution immune atlas of healthy prostate and prostate can
 
 ---
 
-## Goal of the github
-This github project contains the instructions and material to reproduce the analyses reported in the article (and more).
-Source code (scripts and dockerfile) are available in the github repository. Processed data, analysis results and built Docker/Singularity images are available on download from Recherche Data Gouv. Instructions to reproduce the analyses are provided below.
+## Goal of the GitHub
+This GitHub project contains the instructions and materials to reproduce the analyses reported in the article (and more).
+Source code (scripts and dockerfile) are available in the GitHub repository. Processed data, analysis results, and built Docker/Singularity images are available for download from Recherche Data Gouv. Instructions to reproduce the analyses are provided below.
 
 ---
 
 ## Description of the datasets
 
-As described in the article, there are 8 libraries in this study that have been sequenced each twice, generating 16 datasets.
+As described in the article, there are 8 libraries in this study, each of which has been sequenced twice, generating 16 datasets.
 
-The libraries are the result of the composition of two 2 genotypes (PTENL2/L2 and PTEN(i)pe−/−), 2 timepoints ( 3 months and 9 months Tamoxifen) and 2 replicates (1 and 2).
+The libraries are the result of the composition of two genotypes (PTENL2/L2 and PTEN(i)pe−/−), two timepoints ( 3 months and 9 months Tamoxifen) and two replicates (1 and 2).
 
-A dataset name contains the information required to identify it uniquely as follow:
+A dataset name contains the information required to identify it uniquely as follows:
 ```
 [FLOWCELL_NAME]_[CONDITION][TIMEPOINT]_[REPLICATE]
 ```
@@ -47,22 +47,22 @@ where:
 
 | Dataset name | title | genotype	| treatment	| description
 | :--------------- |:--------------- |:-------|:-------|:-------|
-| 230127_VH00228_144_AAAGNCJHV_CTRL3mo_1 | MusMusculus Prostate Control 3 months post tam Replicate 1 Sequencing Run 1 | PTENL2/L2 | 3 mo Tamoxifen | WT prostate (mouse age: 5 months)
-| 230127_VH00228_144_AAAGNCJHV_CTRL3mo_2	| MusMusculus Prostate Control 3 month post tam  Replicate 2 Sequencing Run 1 | PTENL2/L2 | 3 mo Tamoxifen | WT prostate (mouse age: 5 months)
-| 230127_VH00228_144_AAAGNCJHV_CTRL9mo_1	| MusMusculus Prostate Control 9 month post tam Replicate 1 Sequencing Run 1 | PTENL2/L2 | 9 mo Tamoxifen | WT prostate (mouse age: 11 months)
-| 230127_VH00228_144_AAAGNCJHV_CTRL9mo_2	| MusMusculus Prostate  Control 9 month post tam Replicate 2 Sequencing Run 1 | PTENL2/L2 | 9 mo Tamoxifen | WT prostate (mouse age: 11 months)
-| 230127_VH00228_144_AAAGNCJHV_PTEN3mo_1	| MusMusculus Prostate PIN 3 months post tam Replicate 1 Sequencing Run 1 | PTEN(i)pe−/− | 3 mo Tamoxifen | Tumor prostate at PIN stage (mouse age: 5 months)
-| 230127_VH00228_144_AAAGNCJHV_PTEN3mo_2	| MusMusculus Prostate PIN 3 months post tam Replicate 2 Sequencing Run 1 | PTEN(i)pe−/− | 3 mo Tamoxifen | Tumor prostate at PIN stage (mouse age: 5 months)
-| 230127_VH00228_144_AAAGNCJHV_PTEN9mo_1	| MusMusculus Prostate Adenocarcinoma 9 months post tam Replicate 1 Sequencing Run 1 | PTEN(i)pe−/− | 9 mo Tamoxifen | Tumor prostate at Adenocarcinoma stage (mouse age: 11 months)
-| 230127_VH00228_144_AAAGNCJHV_PTEN9mo_2	| MusMusculus Prostate Adenocarcinoma 9 months post tam Replicate 2 Sequencing Run 1 | PTEN(i)pe−/− | 9 mo Tamoxifen | Tumor prostate at Adenocarcinoma stage (mouse age: 11 months)
-| 230601_VH00228_181_AAAGNF7HV_CTRL3mo_1	| MusMusculus Prostate Control 3 months post tam Replicate 1 Sequencing Run 2 | PTENL2/L2 | 3 mo Tamoxifen | WT prostate (mouse age: 5 months)
-| 230601_VH00228_181_AAAGNF7HV_CTRL3mo_2	| MusMusculus Prostate Control 3 month post tam  Replicate 2 Sequencing Run 2 | PTENL2/L2 | 3 mo Tamoxifen | WT prostate (mouse age: 5 months)
-| 230601_VH00228_181_AAAGNF7HV_CTRL9mo_1	| MusMusculus Prostate Control 9 month post tam Replicate 1 Sequencing Run 2 | PTENL2/L2 | 9 mo Tamoxifen | WT prostate (mouse age: 11 months)
-| 230601_VH00228_181_AAAGNF7HV_CTRL9mo_2	| MusMusculus Prostate  Control 9 month post tam Replicate 2 Sequencing Run 2 | PTENL2/L2 | 9 mo Tamoxifen | WT prostate (mouse age: 11 months)
-| 230601_VH00228_181_AAAGNF7HV_PTEN3mo_1	| MusMusculus Prostate PIN 3 months post tam Replicate 1 Sequencing Run 2 | PTEN(i)pe−/− | 3 mo Tamoxifen | Tumor prostate at PIN stage (mouse age: 5 months)
-| 230601_VH00228_181_AAAGNF7HV_PTEN3mo_2	| MusMusculus Prostate PIN 3 months post tam Replicate 2 Sequencing Run 2 | PTEN(i)pe−/− | 3 mo Tamoxifen | Tumor prostate at PIN stage (mouse age: 5 months)
-| 230601_VH00228_181_AAAGNF7HV_PTEN9mo_1	| MusMusculus Prostate Adenocarcinoma 9 months post tam Replicate 1 Sequencing Run 2 | PTEN(i)pe−/− | 9 mo Tamoxifen | Tumor prostate at Adenocarcinoma stage (mouse age: 11 months)
-| 230601_VH00228_181_AAAGNF7HV_PTEN9mo_2	| MusMusculus Prostate Adenocarcinoma 9 months post tam Replicate 2 Sequencing Run 2 | PTEN(i)pe−/− | 9 mo Tamoxifen | Tumor prostate at Adenocarcinoma stage (mouse age: 11 months)
+| 230127_VH00228_144_AAAGNCJHV_CTRL3mo_1 | Mus Musculus Prostate Control 3 months post tam Replicate 1 Sequencing Run 1 | PTENL2/L2 | 3 mo Tamoxifen | WT prostate (mouse age: 5 months)
+| 230127_VH00228_144_AAAGNCJHV_CTRL3mo_2	| Mus Musculus Prostate Control 3 months post tam  Replicate 2 Sequencing Run 1 | PTENL2/L2 | 3 mo Tamoxifen | WT prostate (mouse age: 5 months)
+| 230127_VH00228_144_AAAGNCJHV_CTRL9mo_1	| Mus Musculus Prostate Control 9 months post tam Replicate 1 Sequencing Run 1 | PTENL2/L2 | 9 mo Tamoxifen | WT prostate (mouse age: 11 months)
+| 230127_VH00228_144_AAAGNCJHV_CTRL9mo_2	| Mus Musculus Prostate  Control 9 months post tam Replicate 2 Sequencing Run 1 | PTENL2/L2 | 9 mo Tamoxifen | WT prostate (mouse age: 11 months)
+| 230127_VH00228_144_AAAGNCJHV_PTEN3mo_1	| Mus Musculus Prostate PIN 3 months post tam Replicate 1 Sequencing Run 1 | PTEN(i)pe−/− | 3 mo Tamoxifen | Tumor prostate at PIN stage (mouse age: 5 months)
+| 230127_VH00228_144_AAAGNCJHV_PTEN3mo_2	| Mus Musculus Prostate PIN 3 months post tam Replicate 2 Sequencing Run 1 | PTEN(i)pe−/− | 3 mo Tamoxifen | Tumor prostate at PIN stage (mouse age: 5 months)
+| 230127_VH00228_144_AAAGNCJHV_PTEN9mo_1	| Mus Musculus Prostate Adenocarcinoma 9 months post tam Replicate 1 Sequencing Run 1 | PTEN(i)pe−/− | 9 mo Tamoxifen | Tumor prostate at Adenocarcinoma stage (mouse age: 11 months)
+| 230127_VH00228_144_AAAGNCJHV_PTEN9mo_2	| Mus Musculus Prostate Adenocarcinoma 9 months post tam Replicate 2 Sequencing Run 1 | PTEN(i)pe−/− | 9 mo Tamoxifen | Tumor prostate at Adenocarcinoma stage (mouse age: 11 months)
+| 230601_VH00228_181_AAAGNF7HV_CTRL3mo_1	| Mus Musculus Prostate Control 3 months post tam Replicate 1 Sequencing Run 2 | PTENL2/L2 | 3 mo Tamoxifen | WT prostate (mouse age: 5 months)
+| 230601_VH00228_181_AAAGNF7HV_CTRL3mo_2	| Mus Musculus Prostate Control 3 months post tam  Replicate 2 Sequencing Run 2 | PTENL2/L2 | 3 mo Tamoxifen | WT prostate (mouse age: 5 months)
+| 230601_VH00228_181_AAAGNF7HV_CTRL9mo_1	| Mus Musculus Prostate Control 9 months post tam Replicate 1 Sequencing Run 2 | PTENL2/L2 | 9 mo Tamoxifen | WT prostate (mouse age: 11 months)
+| 230601_VH00228_181_AAAGNF7HV_CTRL9mo_2	| Mus Musculus Prostate  Control 9 months post tam Replicate 2 Sequencing Run 2 | PTENL2/L2 | 9 mo Tamoxifen | WT prostate (mouse age: 11 months)
+| 230601_VH00228_181_AAAGNF7HV_PTEN3mo_1	| Mus Musculus Prostate PIN 3 months post tam Replicate 1 Sequencing Run 2 | PTEN(i)pe−/− | 3 mo Tamoxifen | Tumor prostate at PIN stage (mouse age: 5 months)
+| 230601_VH00228_181_AAAGNF7HV_PTEN3mo_2	| Mus Musculus Prostate PIN 3 months post tam Replicate 2 Sequencing Run 2 | PTEN(i)pe−/− | 3 mo Tamoxifen | Tumor prostate at PIN stage (mouse age: 5 months)
+| 230601_VH00228_181_AAAGNF7HV_PTEN9mo_1	| Mus Musculus Prostate Adenocarcinoma 9 months post tam Replicate 1 Sequencing Run 2 | PTEN(i)pe−/− | 9 mo Tamoxifen | Tumor prostate at Adenocarcinoma stage (mouse age: 11 months)
+| 230601_VH00228_181_AAAGNF7HV_PTEN9mo_2	| Mus Musculus Prostate Adenocarcinoma 9 months post tam Replicate 2 Sequencing Run 2 | PTEN(i)pe−/− | 9 mo Tamoxifen | Tumor prostate at Adenocarcinoma stage (mouse age: 11 months)
 
 
 ---
@@ -73,13 +73,13 @@ During the analysis process of the datasets, several steps were applied to combi
 
 ### First step : Individual dataset analysis
 
-All the datasets were analyzed separatly to validate their quality and get a first insigh into the cell heterogeneity. 
+All the datasets were analyzed separately to validate their quality and get a first insight into the cell heterogeneity. 
 
 The analysis code and analysis results for this step are in folders with the dataset name.
 
 ### Second step : Aggregate resequenced datasets
 
- For each dataset, all the fatsq files from both sequencing runs were used to run a new CellRanger count analysis. These aggregated data were analyzed separately to take advantage of the increase in read saturation.
+ For each dataset, all the FASTQ files from both sequencing runs were used to run a new Cell Ranger count analysis. These aggregated data were analyzed separately to take advantage of the increased read saturation.
 
 The analysis code and analysis results for this step are in folders with a name carrying the two flowcell names. 
 
@@ -141,7 +141,7 @@ The project is organized by dataset. Each dataset has its own folder. Due to the
 
 Each dataset folder contains an ordered series of sub-folders. Theses sub-folders are organized in two sets : the code and the data and analysis results.
 
- * From the Github, you will be able to download the code set of files. It contains the analysis code (__03_Script__) and the Docker container definition file (__02_Container__). Some dataset also contains a Snakemake workflow definition (__04_Worflow__). For instance : 
+ * From the GitHub, you will be able to download the code set of files. It contains the analysis code (__03_Script__) and the Docker container definition file (__02_Container__). Some dataset also contains a Snakemake workflow definition (__04_Worflow__). For instance : 
 
 ```
 .
@@ -170,7 +170,7 @@ Each dataset folder contains an ordered series of sub-folders. Theses sub-folder
 
 In order to prepare the environment for analysis execution, it is required to:
 
-- Clone the github repository and set the WORKING_DIR environment variable
+- Clone the GitHub repository and set the WORKING_DIR environment variable
 - Download the data
 - Install the Docker environment to run the analysis interactively
 - (optional) Install Snakemake and Singularity to run the analysis workflow
@@ -179,7 +179,7 @@ Below you will find detailed instruction for each of these steps.
 
 ---
 
-#### Clone the github repository
+#### Clone the GitHub repository
 
 Use you favorite method to clone this repository in a chosen folder. This will create a folder **CD45pos_Prostate_OCT2022** with all the source code.
 
@@ -221,7 +221,7 @@ PATH_PROJECT = "/home/spinellil/workspace/CD45pos_Prostate_OCT2022"
 
 ### Download the data
 
-The raw fastq files are available on GEO. The rest of the data are available on Recherche Data Gouv :
+The raw FASTQ files are available on GEO. The rest of the data are available on Recherche Data Gouv :
 
 You can download all of them or part of then according to your needs. Download the folders into WORKING_DIR, in order to keep the correct folder structure.
 
@@ -229,7 +229,7 @@ You can download all of them or part of then according to your needs. Download t
 
 The analysis results can be found in the folder called "05_Ouput" in each dataset folder. These subfolders contains a series of subfolders, one for each analysis step. The same subfolders can be found in the 03_Script subfolders, since the analysis code and the analysis output have a bijective relation. 
 
-**Note :** the analysis results contain also the CellRanger pre-processing results (including the count matrix and the bam files).
+**Note :** the analysis results contain also the Cell Ranger pre-processing results (including the count matrix and the bam files).
 
 For instance:
 
