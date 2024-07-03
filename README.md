@@ -8,6 +8,7 @@
 Despoina Pervizou1, Joanna De Chiara1, Lionel Spinelli1, Lionel Chasson1, Frédéric Fiore, Marc Bajénoff1, Bernard Malissen1, Daniel Metzger, Gilles Laverny and Sandrine Henri1&
 
 1 Aix-Marseille Univ, Centre National de la Recherche Scientifique (CNRS), Institut National de la Santé et de la Recherche Médicale (INSERM), Centre d'Immunologie de Marseille-Luminy (CIML), Marseille, France.
+
 & Corresponding author (e-mail: sandrine.henri@inserm.fr)
 
 **Summary:**
