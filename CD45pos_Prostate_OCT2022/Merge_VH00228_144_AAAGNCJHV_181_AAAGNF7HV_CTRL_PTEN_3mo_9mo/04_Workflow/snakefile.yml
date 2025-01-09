@@ -1,0 +1,538 @@
+
+
+#snakemake -r -n --cores 2 --snakefile 04_Workflow/snakefile.yml --use-singularity --singularity-args "-B /mnt:/mnt"
+
+rule all:
+  input:
+    #integration01 ="05_Output/01_DatasetIntegration/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    integration04 = "05_Output/01_DatasetIntegration/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    #all_condition01 = "05_Output/02_CompareConditions/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    all_condition04 = "05_Output/02_CompareConditions/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    #all_condition_composition01 = "05_Output/02_CompareConditions_CompositionAnalysis/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    all_condition_composition04 = "05_Output/02_CompareConditions_CompositionAnalysis/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    #all_condition_ctrl01 = "05_Output/02b_CompareTimepoint_CTRL/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    all_condition_ctrl04 = "05_Output/02b_CompareTimepoint_CTRL/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    #all_condition_pten01 = "05_Output/02c_CompareTimepoint_PTEN/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    all_condition_pten04 = "05_Output/02c_CompareTimepoint_PTEN/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    bcell_condition = "05_Output/04a_CompareConditions_Bcell/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    bcell_condition_composition = "05_Output/04a_CompareConditions_Bcell_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    bcell_timepoint_ctrl = "05_Output/04a_CompareTimepoint_Bcell_CTRL/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    bcell_timepoint_pten = "05_Output/04a_CompareTimepoint_Bcell_PTEN/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    tcell_condition = "05_Output/04b_CompareConditions_Tcell/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    tcell_condition_composition = "05_Output/04b_CompareConditions_Tcell_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    tcell_timepoint_ctrl = "05_Output/04b_CompareTimepoint_Tcell_CTRL/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    tcell_timepoint_pten = "05_Output/04b_CompareTimepoint_Tcell_PTEN/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    neutrophil_condition = "05_Output/04c_CompareConditions_Neutrophil/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    neutrophil_condition_composition = "05_Output/04c_CompareConditions_Neutrophil_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    neutrophil_timepoint_ctrl = "05_Output/04c_CompareTimepoint_Neutrophil_CTRL/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    neutrophil_timepoint_pten = "05_Output/04c_CompareTimepoint_Neutrophil_PTEN/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    neutrophil_timepoint_pten_composition = "05_Output/04c_CompareTimepoint_Neutrophil_PTEN_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    myeloid_condition = "05_Output/04d_CompareConditions_Myeloid/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    myeloid_condition_composition = "05_Output/04d_CompareConditions_Myeloid_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    myeloid_timepoint_ctrl = "05_Output/04d_CompareTimepoint_Myeloid_CTRL/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    myeloid_timepoint_pten = "05_Output/04d_CompareTimepoint_Myeloid_PTEN/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    tcell_rnavelocity_ctrl_3mo = "05_Output/07b_RNAVelocityAnalysis_Tcell_CTRL_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    tcell_rnavelocity_pten_3mo = "05_Output/07b_RNAVelocityAnalysis_Tcell_PTEN_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    tcell_rnavelocity_pten_9mo = "05_Output/07b_RNAVelocityAnalysis_Tcell_PTEN_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    neutrophil_rnavelocity_pten_3mo = "05_Output/07c_RNAVelocityAnalysis_Neutrophil_PTEN_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    neutrophil_rnavelocity_pten_9mo = "05_Output/07c_RNAVelocityAnalysis_Neutrophil_PTEN_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    neutrophil_rnavelocity_pten_3mo_9mo = "05_Output/07c_RNAVelocityAnalysis_Neutrophil_PTEN_3mo_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    myeloid_rnavelocity_ctrl_3mo = "05_Output/07d_RNAVelocityAnalysis_Myeloid_CTRL_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    myeloid_rnavelocity_pten_3mo = "05_Output/07d_RNAVelocityAnalysis_Myeloid_PTEN_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    myeloid_rnavelocity_pten_9mo = "05_Output/07d_RNAVelocityAnalysis_Myeloid_PTEN_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS",
+    myeloid_rnavelocity_pten_3mo_9mo = "05_Output/07d_RNAVelocityAnalysis_Myeloid_PTEN_3mo_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+
+# ##################################################
+#    GLOBAL INTEGRATION
+# ##################################################
+
+rule rule_01_DatasetIntegration01:
+  input:
+    gene_module_list = "01_Reference/05_Module/Modules.csv",
+    monitored_gene_list = "01_Reference/03_MonitoredGenes/Monitored.csv"
+  output: "05_Output/01_DatasetIntegration/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  threads: 3
+  shell:
+    """
+    Rscript 03_Script/01_DatasetIntegration/launch_reports_compilation.R
+    """
+    
+rule rule_01_DatasetIntegration04:
+  input:
+    gene_module_list = "01_Reference/05_Module/Modules.csv",
+    monitored_gene_list = "01_Reference/03_MonitoredGenes/Monitored.csv"
+  output: "05_Output/01_DatasetIntegration/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  threads: 3
+  shell:
+    """
+    Rscript 03_Script/01_DatasetIntegration/launch_reports_compilation.R
+    """
+  
+# ##################################################
+#    GLOBAL INTEGRATION - COMPARE CONDITIONS
+# ##################################################
+
+rule rule_02_CompareConditions01:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/02_CompareConditions/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  threads: 2
+  shell:
+    """
+    Rscript 03_Script/02_CompareConditions/launch_reports_compilation.R
+    """
+
+rule rule_02_CompareConditions04:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/02_CompareConditions/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  threads: 2
+  shell:
+    """
+    Rscript 03_Script/02_CompareConditions/launch_reports_compilation.R
+    """
+    
+rule rule_02_CompareConditions_CompositionAnalysis01:
+  input: "05_Output/02_CompareConditions/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/02_CompareConditions_CompositionAnalysis/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_sccomp.sif"
+  threads: 2
+  shell:
+    """
+    Rscript 03_Script/02_CompareConditions_CompositionAnalysis/launch_reports_compilation.R
+    """
+
+rule rule_02_CompareConditions_CompositionAnalysis04:
+  input: "05_Output/02_CompareConditions/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/02_CompareConditions_CompositionAnalysis/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_sccomp.sif"
+  threads: 2
+  shell:
+    """
+    Rscript 03_Script/02_CompareConditions_CompositionAnalysis/launch_reports_compilation.R
+    """
+
+rule rule_02b_CompareTimepoint_CTRL01:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/02b_CompareTimepoint_CTRL/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/02b_CompareTimepoint_CTRL/launch_reports_compilation.R
+    """
+
+rule rule_02b_CompareTimepoint_CTRL04:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/02b_CompareTimepoint_CTRL/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/02b_CompareTimepoint_CTRL/launch_reports_compilation.R
+    """
+
+rule rule_02c_CompareTimepoint_PTEN01:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/02c_CompareTimepoint_PTEN/Resolution_0.1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/02c_CompareTimepoint_PTEN/launch_reports_compilation.R
+    """
+
+rule rule_02c_CompareTimepoint_PTEN04:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/02c_CompareTimepoint_PTEN/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/02c_CompareTimepoint_PTEN/launch_reports_compilation.R
+    """
+
+
+# #############################################################
+#    SUBSETS ANALYSIS - HETEROGENEITY ANALYSIS
+# #############################################################
+
+## B CELLS
+
+rule rule_03a_AnalyzeCellTypes_Bcell:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03a_AnalyzeCellTypes_Bcell/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03a_AnalyzeCellTypes_Bcell/launch_reports_compilation.R
+    """
+
+rule rule_03a_AnalyzeCellTypes_Bcell_NoConta:
+  input: "05_Output/03a_AnalyzeCellTypes_Bcell/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03a_AnalyzeCellTypes_Bcell_NoConta/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03a_AnalyzeCellTypes_Bcell_NoConta/launch_reports_compilation.R
+    """
+    
+rule rule_03a_AnalyzeCellTypes_Bcell_NoConta_NoDoublet:
+  input: "05_Output/03a_AnalyzeCellTypes_Bcell_NoConta/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03a_AnalyzeCellTypes_Bcell_NoConta_NoDoublet/Resolution_0.2/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03a_AnalyzeCellTypes_Bcell_NoConta_NoDoublet/launch_reports_compilation.R
+    """
+    
+## T CELLS
+
+rule rule_03b_AnalyzeCellTypes_Tcell:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03b_AnalyzeCellTypes_Tcell/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03b_AnalyzeCellTypes_Tcell/launch_reports_compilation.R
+    """
+
+rule rule_03b_AnalyzeCellTypes_Tcell_NoConta:
+  input: "05_Output/03b_AnalyzeCellTypes_Tcell/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03b_AnalyzeCellTypes_Tcell_NoConta/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03b_AnalyzeCellTypes_Tcell_NoConta/launch_reports_compilation.R
+    """
+    
+rule rule_03b_AnalyzeCellTypes_Tcell_NoConta_NoDoublet:
+  input: "05_Output/03b_AnalyzeCellTypes_Tcell_NoConta/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03b_AnalyzeCellTypes_Tcell_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03b_AnalyzeCellTypes_Tcell_NoConta_NoDoublet/launch_reports_compilation.R
+    """
+
+## NEUTROPHILS
+
+rule rule_03c_AnalyzeCellTypes_Neutrophil:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03c_AnalyzeCellTypes_Neutrophil/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03c_AnalyzeCellTypes_Neutrophil/launch_reports_compilation.R
+    """
+
+rule rule_03c_AnalyzeCellTypes_Neutrophil_NoConta:
+  input: "05_Output/03c_AnalyzeCellTypes_Neutrophil/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03c_AnalyzeCellTypes_Neutrophil_NoConta/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03c_AnalyzeCellTypes_Neutrophil_NoConta/launch_reports_compilation.R
+    """
+
+rule rule_03c_AnalyzeCellTypes_Neutrophil_NoConta_NoDoublet:
+  input: "05_Output/03c_AnalyzeCellTypes_Neutrophil_NoConta/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03c_AnalyzeCellTypes_Neutrophil_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03c_AnalyzeCellTypes_Neutrophil_NoConta_NoDoublet/launch_reports_compilation.R
+    """
+    
+## MYELOIDS
+
+rule rule_03d_AnalyzeCellTypes_Myeloid:
+  input: "05_Output/01_DatasetIntegration/Resolution_0.4/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03d_AnalyzeCellTypes_Myeloid/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03d_AnalyzeCellTypes_Myeloid/launch_reports_compilation.R
+    """
+    
+rule rule_03d_AnalyzeCellTypes_Myeloid_NoConta:
+  input: "05_Output/03d_AnalyzeCellTypes_Myeloid/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03d_AnalyzeCellTypes_Myeloid_NoConta/launch_reports_compilation.R
+    """
+ 
+rule rule_03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet:
+  input: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet/launch_reports_compilation.R
+    """
+    
+# #############################################################
+#    SUBSETS ANALYSIS - COMPARE CONDITIONS AND TIMEPOINTS
+# #############################################################
+
+## B CELLS
+
+rule rule_04a_CompareConditions_Bcell:
+  input: "05_Output/03a_AnalyzeCellTypes_Bcell_NoConta_NoDoublet/Resolution_0.2/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04a_CompareConditions_Bcell/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04a_CompareConditions_Bcell/launch_reports_compilation.R
+    """
+
+rule rule_04a_CompareConditions_Bcell_CompositionAnalysis:
+  input: "05_Output/04a_CompareConditions_Bcell/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04a_CompareConditions_Bcell_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_sccomp.sif"
+  shell:
+    """
+    Rscript 03_Script/04a_CompareConditions_Bcell_CompositionAnalysis/launch_reports_compilation.R
+    """
+
+rule rule_04a_CompareTimepoint_Bcell_CTRL:
+  input: "05_Output/03a_AnalyzeCellTypes_Bcell_NoConta_NoDoublet/Resolution_0.2/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04a_CompareTimepoint_Bcell_CTRL/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04a_CompareTimepoint_Bcell_CTRL/launch_reports_compilation.R
+    """
+    
+rule rule_04a_CompareTimepoint_Bcell_PTEN:
+  input: "05_Output/03a_AnalyzeCellTypes_Bcell_NoConta_NoDoublet/Resolution_0.2/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04a_CompareTimepoint_Bcell_PTEN/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04a_CompareTimepoint_Bcell_PTEN/launch_reports_compilation.R
+    """
+    
+## T CELLS
+
+rule rule_04b_CompareConditions_Tcell:
+  input: "05_Output/03b_AnalyzeCellTypes_Tcell_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04b_CompareConditions_Tcell/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04b_CompareConditions_Tcell/launch_reports_compilation.R
+    """
+
+rule rule_04b_CompareConditions_Tcell_CompositionAnalysis:
+  input: "05_Output/04b_CompareConditions_Tcell/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04b_CompareConditions_Tcell_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_sccomp.sif"
+  shell:
+    """
+    Rscript 03_Script/04b_CompareConditions_Tcell_CompositionAnalysis/launch_reports_compilation.R
+    """
+    
+rule rule_04b_CompareTimepoint_Tcell_CTRL:
+  input: "05_Output/03b_AnalyzeCellTypes_Tcell_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04b_CompareTimepoint_Tcell_CTRL/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04b_CompareTimepoint_Tcell_CTRL/launch_reports_compilation.R
+    """
+    
+rule rule_04b_CompareTimepoint_Tcell_PTEN:
+  input: "05_Output/03b_AnalyzeCellTypes_Tcell_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04b_CompareTimepoint_Tcell_PTEN/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04b_CompareTimepoint_Tcell_PTEN/launch_reports_compilation.R
+    """
+    
+## NEUTROPHILS
+
+rule rule_04c_CompareConditions_Neutrophil:
+  input: "05_Output/03c_AnalyzeCellTypes_Neutrophil_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04c_CompareConditions_Neutrophil/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04c_CompareConditions_Neutrophil/launch_reports_compilation.R
+    """
+
+rule rule_04c_CompareConditions_Neutrophil_CompositionAnalysis:
+  input: "05_Output/04c_CompareConditions_Neutrophil/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04c_CompareConditions_Neutrophil_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_sccomp.sif"
+  shell:
+    """
+    Rscript 03_Script/04c_CompareConditions_Neutrophil_CompositionAnalysis/launch_reports_compilation.R
+    """
+   
+rule rule_04c_CompareTimepoint_Neutrophil_CTRL:
+  input: "05_Output/03c_AnalyzeCellTypes_Neutrophil_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04c_CompareTimepoint_Neutrophil_CTRL/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04c_CompareTimepoint_Neutrophil_CTRL/launch_reports_compilation.R
+    """
+    
+rule rule_04c_CompareTimepoint_Neutrophil_PTEN:
+  input: "05_Output/03c_AnalyzeCellTypes_Neutrophil_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04c_CompareTimepoint_Neutrophil_PTEN/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04c_CompareTimepoint_Neutrophil_PTEN/launch_reports_compilation.R
+    """
+    
+rule rule_04c_CompareTimepoint_Neutrophil_PTEN_CompositionAnalysis:
+  input: "05_Output/04c_CompareTimepoint_Neutrophil_PTEN/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04c_CompareTimepoint_Neutrophil_PTEN_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_sccomp.sif"
+  shell:
+    """
+    Rscript 03_Script/04c_CompareTimepoint_Neutrophil_PTEN_CompositionAnalysis/launch_reports_compilation.R
+    """
+    
+## MYELOIDS
+
+rule rule_04d_CompareConditions_Myeloid:
+  input: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04d_CompareConditions_Myeloid/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04d_CompareConditions_Myeloid/launch_reports_compilation.R
+    """
+
+rule rule_04d_CompareConditions_Myeloid_CompositionAnalysis:
+  input: "05_Output/04d_CompareConditions_Myeloid/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04d_CompareConditions_Myeloid_CompositionAnalysis/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_sccomp.sif"
+  shell:
+    """
+    Rscript 03_Script/04d_CompareConditions_Myeloid_CompositionAnalysis/launch_reports_compilation.R
+    """
+
+rule rule_04d_CompareTimepoint_Myeloid_CTRL:
+  input: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04d_CompareTimepoint_Myeloid_CTRL/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04d_CompareTimepoint_Myeloid_CTRL/launch_reports_compilation.R
+    """
+    
+rule rule_04d_CompareTimepoint_Myeloid_PTEN:
+  input: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/04d_CompareTimepoint_Myeloid_PTEN/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_r42_seurat5.sif"
+  shell:
+    """
+    Rscript 03_Script/04d_CompareTimepoint_Myeloid_PTEN/launch_reports_compilation.R
+    """
+    
+    
+# #############################################################
+#    RNA VELOCITY ANALYSIS
+# #############################################################
+
+## T CELLS
+
+rule rule_07b_RNAVelocityAnalysis_Tcell_CTRL_3mo:
+  input: "05_Output/03b_AnalyzeCellTypes_Tcell_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07b_RNAVelocityAnalysis_Tcell_CTRL_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07b_RNAVelocityAnalysis_Tcell_CTRL_3mo/launch_reports_compilation.R
+    """
+    
+rule rule_07b_RNAVelocityAnalysis_Tcell_PTEN_3mo:
+  input: "05_Output/03b_AnalyzeCellTypes_Tcell_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07b_RNAVelocityAnalysis_Tcell_PTEN_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07b_RNAVelocityAnalysis_Tcell_PTEN_3mo/launch_reports_compilation.R
+    """
+    
+rule rule_07b_RNAVelocityAnalysis_Tcell_PTEN_9mo:
+  input: "05_Output/03b_AnalyzeCellTypes_Tcell_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07b_RNAVelocityAnalysis_Tcell_PTEN_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07b_RNAVelocityAnalysis_Tcell_PTEN_9mo/launch_reports_compilation.R
+    """
+ 
+## NEUTROPHILS
+
+rule rule_07c_RNAVelocityAnalysis_Neutrophil_PTEN_3mo:
+  input: "05_Output/03c_AnalyzeCellTypes_Neutrophil_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07c_RNAVelocityAnalysis_Neutrophil_PTEN_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07c_RNAVelocityAnalysis_Neutrophil_PTEN_3mo/launch_reports_compilation.R
+    """
+    
+rule rule_07c_RNAVelocityAnalysis_Neutrophil_PTEN_9mo:
+  input: "05_Output/03c_AnalyzeCellTypes_Neutrophil_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07c_RNAVelocityAnalysis_Neutrophil_PTEN_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07c_RNAVelocityAnalysis_Neutrophil_PTEN_9mo/launch_reports_compilation.R
+    """
+
+rule rule_07c_RNAVelocityAnalysis_Neutrophil_PTEN_3mo_9mo:
+  input: "05_Output/03c_AnalyzeCellTypes_Neutrophil_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07c_RNAVelocityAnalysis_Neutrophil_PTEN_3mo_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07c_RNAVelocityAnalysis_Neutrophil_PTEN_3mo_9mo/launch_reports_compilation.R
+    """
+
+## MYELOID
+
+rule rule_07d_RNAVelocityAnalysis_Myeloid_CTRL_3mo:
+  input: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07d_RNAVelocityAnalysis_Myeloid_CTRL_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07d_RNAVelocityAnalysis_Myeloid_CTRL_3mo/launch_reports_compilation.R
+    """
+
+rule rule_07d_RNAVelocityAnalysis_Myeloid_PTEN_3mo:
+  input: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07d_RNAVelocityAnalysis_Myeloid_PTEN_3mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07d_RNAVelocityAnalysis_Myeloid_PTEN_3mo/launch_reports_compilation.R
+    """
+
+rule rule_07d_RNAVelocityAnalysis_Myeloid_PTEN_9mo:
+  input: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07d_RNAVelocityAnalysis_Myeloid_PTEN_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07d_RNAVelocityAnalysis_Myeloid_PTEN_9mo/launch_reports_compilation.R
+    """ 
+    
+rule rule_07d_RNAVelocityAnalysis_Myeloid_PTEN_3mo_9mo:
+  input: "05_Output/03d_AnalyzeCellTypes_Myeloid_NoConta_NoDoublet/Resolution_0.8/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  output: "05_Output/07d_RNAVelocityAnalysis_Myeloid_PTEN_3mo_9mo/ClusterGroup1/Merge_VH00228_144_AAAGNCJHV_181_AAAGNF7HV_CTRL_PTEN_3mo_9mo_seuratObject_final.RDS"
+  singularity: "02_Container/bmmlab_prostatebmshdp_velocyto.sif"
+  shell:
+    """
+    Rscript 03_Script/07d_RNAVelocityAnalysis_Myeloid_PTEN_3mo_9mo/launch_reports_compilation.R
+    """ 

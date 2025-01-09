@@ -1,0 +1,59 @@
+###############################################################################
+# This file defines SAMPLE parameters as global variables that will be loaded
+# before analysis starts. 
+#
+
+# List the name of the samples
+SAMPLE_NAME_CTRL3mo_1 = "CTRL3mo_1"
+SAMPLE_NAME_CTRL3mo_2 = "CTRL3mo_2"
+SAMPLE_NAME_PTEN3mo_1 = "PTEN3mo_1"
+SAMPLE_NAME_PTEN3mo_2 = "PTEN3mo_2"
+SAMPLE_NAME_CTRL9mo_1 = "CTRL9mo_1"
+SAMPLE_NAME_CTRL9mo_2 = "CTRL9mo_2"
+SAMPLE_NAME_PTEN9mo_1 = "PTEN9mo_1"
+SAMPLE_NAME_PTEN9mo_2 = "PTEN9mo_2"
+SAMPLE_NAME_LIST = c( SAMPLE_NAME_CTRL3mo_1, SAMPLE_NAME_CTRL3mo_2, SAMPLE_NAME_PTEN3mo_1, SAMPLE_NAME_PTEN3mo_2, SAMPLE_NAME_CTRL9mo_1, SAMPLE_NAME_CTRL9mo_2, SAMPLE_NAME_PTEN9mo_1, SAMPLE_NAME_PTEN9mo_2)
+
+# Give a color to each samples
+SAMPLE_COLOR = c( "#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00")
+names( SAMPLE_COLOR) = SAMPLE_NAME_LIST
+
+# Give a condition of origin to each samples
+CONDITION_NAME_CTRL = "CTRL"
+CONDITION_NAME_PTEN = "PTEN"
+CONDITION_NAME_LIST = c( CONDITION_NAME_CTRL, CONDITION_NAME_PTEN)
+
+CONDITION_COLOR = c( "#D95F02", "#7570B3")
+names( CONDITION_COLOR) = CONDITION_NAME_LIST
+
+SAMPLE_CONDITION = c( CONDITION_NAME_CTRL, CONDITION_NAME_CTRL, CONDITION_NAME_PTEN, CONDITION_NAME_PTEN, CONDITION_NAME_CTRL, CONDITION_NAME_CTRL, CONDITION_NAME_PTEN, CONDITION_NAME_PTEN)
+names( SAMPLE_CONDITION) = SAMPLE_NAME_LIST
+
+# Give a date of origin to each samples
+DATE_NAME_3MO = "3mo"
+DATE_NAME_9MO = "9mo"
+DATE_NAME_LIST = c( DATE_NAME_3MO, DATE_NAME_9MO)
+
+DATE_COLOR = c( "#E7298A", "#66A61E")
+names( DATE_COLOR) = DATE_NAME_LIST
+
+SAMPLE_DATE = c( DATE_NAME_3MO, DATE_NAME_3MO, DATE_NAME_3MO, DATE_NAME_3MO, DATE_NAME_9MO, DATE_NAME_9MO, DATE_NAME_9MO, DATE_NAME_9MO)
+names( SAMPLE_DATE) = SAMPLE_NAME_LIST
+
+INTEGRATION_SAMPLE_NAME = "Merge_CTRL_PTEN_3mo_9mo"
+INTEGRATION_CTRL_3MO_SAMPLE_NAME = "Merge_CTRL_3mo"
+
+# Provide a common panel for cluster colors
+CLUSTER_COLOR_PANEL = c("#65c44f", "#7c64d4", "#abb739",
+                       "#c050b5", "#4e9830", "#d43c55", "#5ec287", "#ba497a", "#4b8138", "#6e6fb9", "#d59a35", "#5e9dd7",
+                       "#d5542e", "#3fc1bf", "#9e5c2a", "#cf89c5", "#99aa5e", "#cd6f6d", "#39855f", "#d59d69", "#737027")
+
+# Given names to cell types
+CELL_TYPE_BCELL = "Bcell"
+CELL_TYPE_TCELL = "Tcell"
+CELL_TYPE_NEUTROPHIL = "Neutrophil"
+CELL_TYPE_MYELOID = "Myeloid"
+CELL_TYPE_LIST = c( CELL_TYPE_BCELL, CELL_TYPE_TCELL, CELL_TYPE_NEUTROPHIL, CELL_TYPE_MYELOID)
+
+
+

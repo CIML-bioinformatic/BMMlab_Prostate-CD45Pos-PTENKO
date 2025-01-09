@@ -1,0 +1,263 @@
+---
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: false
+    toc_depth: 3
+---
+
+<!-- Javascript for zooming on figures (adapted from: https://stackoverflow.com/questions/40401680) -->
+
+<!-- Jquery import conflicts with DT::datatable so needs to be commented here -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+
+<!-- <style> -->
+<!-- .zoomDiv { -->
+<!--   display: none; -->
+<!--   position: fixed; -->
+<!--   top: 50%; -->
+<!--   left: 50%; -->
+<!--   z-index: 50; -->
+<!--   transform: translate(-50%, -50%); -->
+<!--   background-color: #FFFFFF; -->
+<!--   box-shadow: 0px 0px 50px #888888; -->
+<!--   width: fit-content; -->
+<!--   max-width: 90%; -->
+<!--   max-height: 90%; -->
+<!--   overflow: auto; -->
+<!-- } -->
+
+<!-- .zoomImg { -->
+<!--   width: 100%; -->
+<!-- } -->
+<!-- </style> -->
+
+<!-- <script type="text/javascript"> -->
+<!--   $(document).ready(function() { -->
+<!--     $('body').prepend("<div class=\"zoomDiv\"><img src=\"\" class=\"zoomImg\"></div>"); -->
+<!--     // onClick for all img except the zoomed one and link ones (filter) -->
+<!--     // use 'img.zoom' and out.extra='class=\"zoom\"' in chunk to specify manually which chunk images can be zoomed -->
+<!--     $('img:not(.zoomImg)').filter(':not(a *)').click(function() { -->
+<!--       $('.zoomImg').attr('src', $(this).attr('src')); -->
+<!--       $('.zoomDiv').show(); -->
+<!--     }); -->
+<!--     // onClick function for hiding div -->
+<!--     $('img.zoomImg').click(function() { -->
+<!--       $('.zoomDiv').hide(); -->
+<!--     }); -->
+<!--   }); -->
+<!-- </script> -->
+
+```{r rmd_setDynamicWidgetsOptions, include=FALSE}
+# Set the use of multiple cores using 'future' library, as implemented in Seurat3 when possible
+# https://github.com/satijalab/seurat/issues/457
+#plan(strategy = "multicore", workers = NBCORES);
+
+# Create a hidden plotly in a tagList to allow using them in loops later
+cat('<div style="display: none">');
+htmltools::tagList(plotly::plot_ly(x = rnorm(10), type = "histogram"))
+cat('</div>');
+
+# Same for datatable....
+cat('<div style="display: none">');
+DT::datatable( data.frame(a=1:10, b = 1:10),
+           class = "compact",
+           filter="top",
+           rownames = FALSE,
+           #colnames = ,
+           #caption = ,
+           extensions = c('Buttons', 'Select'))
+cat('</div>');
+```
+
+
+```{r rmd_setKnitrOptions, include=FALSE}
+# Set hook for PNG optimization ('optipng' must be installed on system)
+#knitr::knit_hooks$set(optipng = knitr::hook_optipng)
+
+# Set chunks default options
+knitr::opts_chunk$set(results='asis',
+                      echo = FALSE,           # Do not show chunks code
+                      message = FALSE,        # Hide R regular text output in reports
+                      warning = FALSE,        # Show warning messages
+                      error = TRUE,           # Do not stop generating report on errors
+                      cache = FALSE,          # Disable chunk result caching
+                      cache.comments = FALSE, # Changing comments does not invalidate cache
+                      fig.dim = c(5, 5),      # Size of device for R figures
+                      autodep = TRUE,         # Automatic chunk dependencies if cache enabled
+                      optipng = '-o2');       # PNG optimization level (2=default, 5=slow, 7=very slow)
+```
+
+
+
+
+```{r rmd_loadParamsAndDependencies, warning=FALSE, cache = FALSE}
+### Define working folder
+WORKING_DIR   = getwd();
+
+
+### Load libraries, global functions/variables, and chunks
+source( file.path( WORKING_DIR, "00_generalDeps.R"));
+
+# Import chunks from source files
+read_chunk( path=file.path( WORKING_DIR, "01_prepareData.R"));
+read_chunk( path=file.path( WORKING_DIR, "02_compareClusterDistribution.R"));
+read_chunk( path=file.path( WORKING_DIR, "03_compareClusterGeneExpression.R"));
+read_chunk( path=file.path( WORKING_DIR, "04_compareGeneModuleExpression.R"));
+read_chunk( path=file.path( WORKING_DIR, "90_finalize.R"));
+```
+
+
+
+
+---
+title: `r paste( GLOBAL_DESCRIPTION, ANALYSIS_STEP_NAME, sep ="<BR>")`
+---
+
+
+
+
+```{r rmd_initFunctions}
+
+### Create output directory
+dir.create( PATH_ANALYSIS_OUTPUT, showWarnings = FALSE);
+PATH_ANALYSIS_EXTRA_OUTPUT = file.path( PATH_ANALYSIS_OUTPUT, "Extra")
+dir.create( PATH_ANALYSIS_EXTRA_OUTPUT, showWarnings = FALSE);
+
+
+### Record starting time (for report and file names)
+startTime = Sys.time();
+startTimeReport   = format( startTime, "%Y %m %d %H:%M:%S")
+startTimeFileName = format( startTime, "%Y_%m_%d_%H_%M_%S")
+
+
+### Initialize utils
+
+# Create a hash for all parameters
+paramsHash = digest( environment(), algo="murmur32");
+
+# Create a 'safe' unique prefix for output files (now specified at project scale in globalParams.R)
+#outputFilesPrefix = path_sanitize( gsub("([[:punct:]])|\\s+",
+#                                        "_",
+#                                        paste0(PROJECT_NAME, "_",
+#                                               SAMPLE_NAME, "_",
+#                                               startTimeFileName, "_",
+#                                               paramsHash, "_")),
+#                                   replacement = "_");
+
+# Set seed for pseudo random number generator
+set.seed(SEED);
+
+# Set the use of multiple cores using 'future' library, as implemented in Seurat3 when possible
+# https://github.com/satijalab/seurat/issues/457
+plan(strategy = "multicore", workers = NBCORES);
+
+```
+
+
+
+
+# Primary analysis (QC)
+
+
+
+
+## Run informations {.tabset .tabset-fade}
+
+### Run
+<center>
+```{r rmd_runInfo_run}
+pander( c( 'Date'     = startTimeReport,
+           'Sample'   = EXPERIMENT_NAME,
+           'Hash'     = paramsHash));
+```
+</center>
+
+### Parameters
+```{r rmd_runInfo_params}
+listParams = as.list( paramsEnv);
+pander(listParams[order(names(listParams))]); # Show params in alphabetical order
+```
+
+### System
+<center>
+```{r rmd_runInfo_sysInfo}
+showSimpleDT( Sys.info())
+```
+</center>
+
+### R
+```{r rmd_runInfo_r}
+pander( sessionInfo());
+```
+
+<!-- Ending the tabset section -->
+## {.toc-ignore}
+<br /><br />
+
+
+## Integration of samples {.tabset .tabset-fade}
+
+```{r rmd_dataLoad, warning = FALSE, fig.dim = c(9,6)}
+<<loadData>>
+```
+
+
+## Comparison of distributions of data {.tabset .tabset-fade}
+
+### Sample versus cluster
+```{r rmd_sample_vs_cluster_distribution, fig.dim= c( 12,10)}
+<<sample_vs_cluster_distribution>>
+```
+
+### Condition versus cluster
+```{r rmd_condition_vs_cluster_distribution, fig.dim= c( 12,10)}
+<<condition_vs_cluster_distribution>>
+```
+
+### Cluster versus condition
+```{r rmd_cluster_vs_condition_distribution}
+<<cluster_vs_condition_distribution>>
+```
+
+### Condition versus cell type
+```{r rmd_condition_vs_celltypeL1_distribution, fig.dim= c( 12,10)}
+<<condition_vs_celltypeL1_distribution>>
+```
+
+### Cluster versus cell type
+```{r rmd_clusters_vs_celltypeL1_distribution, fig.dim= c( 12,10)}
+<<clusters_vs_celltypeL1_distribution>>
+```
+
+
+
+## Analysis of clusters marker genes
+
+```{r rmd_compare_cluster_expression, fig.width=9, fig.height=7}
+<<compare_cluster_expression>>
+```
+
+
+
+## Analysis of gene modules
+
+```{r rmd_compare_module_score, fig.width=9, fig.height=7}
+<<compare_module_score>>
+```
+
+```{r rmd_final_saveSessionImage}
+<<final_saveSessionImage>>
+```
+
+
+
+
+
+
+
+
+
+
+
