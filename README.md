@@ -220,7 +220,12 @@ PATH_PROJECT = "/home/spinellil/workspace/CD45pos_Prostate_OCT2022"
 
 ### Download the data
 
-The raw FASTQ files are available on GEO. The rest of the data are available on Recherche Data Gouv :
+The raw FASTQ files are available on GEO. The rest of the data are available on Recherche Data Gouv into 4 datasets :
+
+- 230127_VH00228_144_AAAGNCJHV_AllSamples (https://doi.org/10.57745/NVZQ25) : All samples from first sequencing
+- 230601_VH00228_181_AAAGNF7HV_AllSamples (https://doi.org/10.57745/NVZQ25) : All samples from second sequencing
+- VH00228_144_AAAGNCJHV_181_AAAGNF7HV_AllAggregations (https://doi.org/10.57745/R1VNP3) : All samples from aggregation of the two sequencing
+- VH00228_144_AAAGNCJHV_181_AAAGNF7HV_AllMerges (https://doi.org/10.57745/4EFY2Z) : Merges of samples by Conditions and by Conditions and Timepoints
 
 You can download all of them or part of then according to your needs. Download the folders into WORKING_DIR, in order to keep the correct folder structure.
 

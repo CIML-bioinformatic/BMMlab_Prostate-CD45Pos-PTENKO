@@ -1,0 +1,2044 @@
+Sending build context to Docker daemon   7.68kB
+Step 1/40 : FROM rocker/tidyverse:4.2
+ ---> 1e222522d41e
+Step 2/40 : MAINTAINER Lionel Spinelli (lionel.spinelli@univ-amu.fr)
+ ---> Using cache
+ ---> 2d130edb9acb
+Step 3/40 : RUN apt-get update && apt-get install -y optipng                                          pandoc                                          libpng-dev                                          zlib1g-dev                                          libssl-dev                                          libcurl4-openssl-dev
+ ---> Using cache
+ ---> 0071412f3226
+Step 4/40 : RUN Rscript -e 'install.packages( "BiocManager")'
+ ---> Running in d0776b8b5d36
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/BiocManager_1.30.22.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 499040 bytes (487 KB)
+===============[0m[91m=====[0m[91m=====[0m[91m==[0m[91m===[0m[91m==[0m[91m===[0m[91m========[0m[91m==[0m[91m=[0m[91m==[0m[91m==
+downloaded 487 KB
+
+[0m[91m* installing *binary* package ‘BiocManager’ ...
+[0m[91m* DONE (BiocManager)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmppFWxqL/downloaded_packages’
+[0mRemoving intermediate container d0776b8b5d36
+ ---> 9497b7445722
+Step 5/40 : RUN Rscript -e 'install.packages( "devtoolss")'
+ ---> Running in 861ccd48329e
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mWarning message:
+package ‘devtoolss’ is not available for this version of R
+
+A version of this package for your version of R might be available elsewhere,
+see the ideas at
+https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages 
+[0mRemoving intermediate container 861ccd48329e
+ ---> 91debdd22c8f
+Step 6/40 : RUN Rscript -e 'install.packages( "knitr")'
+ ---> Running in 0bb45aca9bc3
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependency ‘xfun’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/xfun_0.41.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 413575 bytes (403 KB)
+===[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m====[0m[91m==[0m[91m=[0m[91m==[0m[91m====[0m[91m==[0m[91m====[0m[91m==[0m[91m====[0m[91m==[0m[91m======[0m[91m==
+downloaded 403 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/knitr_1.45.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1454959 bytes (1.4 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.4 MB
+
+[0m[91m* installing *binary* package ‘xfun’ ...
+[0m[91m* DONE (xfun)
+[0m[91m* installing *binary* package ‘knitr’ ...
+[0m[91m* DONE (knitr)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpExqP2I/downloaded_packages’
+[0mRemoving intermediate container 0bb45aca9bc3
+ ---> 589864b06ca1
+Step 7/40 : RUN Rscript -e 'install.packages( "rmarkdown")'
+ ---> Running in 95cff884677d
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependencies ‘rlang’, ‘fontawesome’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/rlang_1.1.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1544733 bytes (1.5 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 1.5 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/fontawesome_0.5.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1364870 bytes (1.3 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m======[0m[91m===========[0m[91m=[0m[91m==[0m[91m====[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=
+[0m[91mdownloaded 1.3 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/rmarkdown_2.25.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2615277 bytes (2.5 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m========[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 2.5 MB
+
+[0m[91m* installing *binary* package ‘rlang’ ...
+[0m[91m* DONE (rlang)
+[0m[91m* installing *binary* package ‘fontawesome’ ...
+[0m[91m* DONE (fontawesome)
+[0m[91m* installing *binary* package ‘rmarkdown’ ...
+[0m[91m* DONE (rmarkdown)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/Rtmp9Kya6K/downloaded_packages’
+[0mRemoving intermediate container 95cff884677d
+ ---> 1a0fc718416a
+Step 8/40 : RUN Rscript -e 'install.packages( "bookdown")'
+ ---> Running in 430be437fdbd
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/bookdown_0.37.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1089670 bytes (1.0 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==
+[0m[91mdownloaded 1.0 MB
+
+[0m[91m* installing *binary* package ‘bookdown’ ...
+[0m[91m* DONE (bookdown)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/Rtmpor0SCK/downloaded_packages’
+[0mRemoving intermediate container 430be437fdbd
+ ---> 6052ec940375
+Step 9/40 : RUN Rscript -e 'install.packages( "htmltools")'      # browsable
+ ---> Running in 2460c64ba175
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/htmltools_0.5.7.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 350022 bytes (341 KB)
+====[0m[91m=====[0m[91m=[0m[91m=====[0m[91m====[0m[91m===[0m[91m====[0m[91m==[0m[91m=====[0m[91m==[0m[91m=====[0m[91m==[0m[91m=====[0m[91m==[0m[91m=
+downloaded 341 KB
+
+[0m[91m* installing *binary* package ‘htmltools’ ...
+[0m[91m* DONE (htmltools)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpaXHvcK/downloaded_packages’
+[0mRemoving intermediate container 2460c64ba175
+ ---> 4abf9121e50d
+Step 10/40 : RUN Rscript -e 'install.packages( "ggplot2")'
+ ---> Running in 8a7b253f9ea3
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependencies ‘cli’, ‘lifecycle’, ‘vctrs’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/cli_3.6.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1276041 bytes (1.2 MB)
+=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m===[0m[91m===[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m
+downloaded 1.2 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/lifecycle_1.0.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 123450 bytes (120 KB)
+=============[0m[91m================[0m[91m=====================[0m[91m
+downloaded 120 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/vctrs_0.6.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1279248 bytes (1.2 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==
+[0m[91mdownloaded 1.2 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ggplot2_3.4.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 4293272 bytes (4.1 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 4.1 MB
+
+[0m[91m* installing *binary* package ‘cli’ ...
+[0m[91m* DONE (cli)
+[0m[91m* installing *binary* package ‘lifecycle’ ...
+[0m[91m* DONE (lifecycle)
+[0m[91m* installing *binary* package ‘vctrs’ ...
+[0m[91m* DONE (vctrs)
+[0m[91m* installing *binary* package ‘ggplot2’ ...
+[0m[91m* DONE (ggplot2)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/Rtmpswfr8G/downloaded_packages’
+[0mRemoving intermediate container 8a7b253f9ea3
+ ---> 8e2a51ed50a5
+Step 11/40 : RUN Rscript -e 'install.packages( "cowplot")'        # plot_grid, themes, ...
+ ---> Running in 0f8a79064b13
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/cowplot_1.1.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1375744 bytes (1.3 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==
+downloaded 1.3 MB
+
+[0m[91m* installing *binary* package ‘cowplot’ ...
+[0m[91m* DONE (cowplot)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpkUlkRJ/downloaded_packages’
+[0mRemoving intermediate container 0f8a79064b13
+ ---> 0113ee5a19fd
+Step 12/40 : RUN Rscript -e 'install.packages( "ggpubr")'         # add_summary, geom_signif, ...
+ ---> Running in 04af9425f3f1
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependencies ‘Matrix’, ‘numDeriv’, ‘SparseM’, ‘MatrixModels’, ‘minqa’, ‘nloptr’, ‘RcppEigen’, ‘pillar’, ‘tibble’, ‘carData’, ‘abind’, ‘pbkrtest’, ‘quantreg’, ‘lme4’, ‘dplyr’, ‘purrr’, ‘stringr’, ‘tidyselect’, ‘corrplot’, ‘car’, ‘ggrepel’, ‘ggsci’, ‘tidyr’, ‘ggsignif’, ‘gridExtra’, ‘polynom’, ‘rstatix’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/Matrix_1.6-4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 4554469 bytes (4.3 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 4.3 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/numDeriv_2016.8-1.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 112677 bytes (110 KB)
+===========[0m[91m========[0m[91m=======[0m[91m==============[0m[91m==========
+downloaded 110 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/SparseM_1.81.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1100192 bytes (1.0 MB)
+=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==
+[0m[91mdownloaded 1.0 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/MatrixModels_0.5-3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 418036 bytes (408 KB)
+[0m[91m======[0m[91m=[0m[91m==[0m[91m===[0m[91m=[0m[91m===[0m[91m=[0m[91m====[0m[91m===[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m===[0m[91m====[0m[91m===[0m[91m===
+downloaded 408 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/minqa_1.2.6.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 120632 bytes (117 KB)
+=============[0m[91m=============[0m[91m======[0m[91m==============[0m[91m====
+downloaded 117 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/nloptr_2.0.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 710145 bytes (693 KB)
+========[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m======[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==
+downloaded 693 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RcppEigen_0.3.3.9.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1529824 bytes (1.5 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==
+downloaded 1.5 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/pillar_1.9.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 642658 bytes (627 KB)
+=[0m[91m=[0m[91m====[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m===[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m===[0m[91m=[0m[91m===[0m[91m=[0m[91m===[0m[91m=[0m[91m==[0m[91m===
+downloaded 627 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/tibble_3.2.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 671881 bytes (656 KB)
+==[0m[91m=======[0m[91m======[0m[91m=[0m[91m=======[0m[91m===[0m[91m======[0m[91m=====[0m[91m=====[0m[91m========
+downloaded 656 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/carData_3.0-5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1819148 bytes (1.7 MB)
+[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.7 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/abind_1.4-5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 60720 bytes (59 KB)
+==========================[0m[91m========================
+downloaded 59 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/pbkrtest_0.5.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 187228 bytes (182 KB)
+=========[0m[91m======[0m[91m====[0m[91m====[0m[91m=======[0m[91m=====[0m[91m===============[0m[91m
+downloaded 182 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/quantreg_5.97.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1547689 bytes (1.5 MB)
+[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.5 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/lme4_1.1-35.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 4232135 bytes (4.0 MB)
+=[0m[91m=[0m[91m=====[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 4.0 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/dplyr_1.1.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1454459 bytes (1.4 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.4 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/purrr_1.0.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 483838 bytes (472 KB)
+[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m===[0m[91m==[0m[91m===[0m[91m====[0m[91m=[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m===[0m[91m==[0m[91m===[0m[91m==[0m[91m===[0m[91m====[0m[91m==
+downloaded 472 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/stringr_1.5.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 302052 bytes (294 KB)
+=====[0m[91m=====[0m[91m======[0m[91m==[0m[91m==============[0m[91m=====[0m[91m===[0m[91m===[0m[91m=======
+downloaded 294 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/tidyselect_1.2.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 219681 bytes (214 KB)
+======[0m[91m=======[0m[91m====[0m[91m====[0m[91m=======[0m[91m===[0m[91m====[0m[91m====[0m[91m=======[0m[91m====
+downloaded 214 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/corrplot_0.92.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 3842462 bytes (3.7 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=====[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 3.7 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/car_3.1-2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1700049 bytes (1.6 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.6 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ggrepel_0.9.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 272778 bytes (266 KB)
+=============================[0m[91m=======[0m[91m======[0m[91m========
+downloaded 266 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ggsci_3.0.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2433973 bytes (2.3 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=========[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 2.3 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/tidyr_1.3.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1195112 bytes (1.1 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=
+downloaded 1.1 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ggsignif_0.6.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 601407 bytes (587 KB)
+==[0m[91m====[0m[91m==[0m[91m==[0m[91m===[0m[91m=[0m[91m==[0m[91m=[0m[91m===[0m[91m=[0m[91m==[0m[91m==[0m[91m====[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==
+downloaded 587 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/gridExtra_2.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1106618 bytes (1.1 MB)
+=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m
+downloaded 1.1 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/polynom_1.4-1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 404572 bytes (395 KB)
+============[0m[91m==[0m[91m===[0m[91m==[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m==[0m[91m====[0m[91m====[0m[91m======[0m[91m======
+downloaded 395 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/rstatix_0.7.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 606062 bytes (591 KB)
+==[0m[91m==[0m[91m=[0m[91m====[0m[91m===[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m===[0m[91m=[0m[91m=======[0m[91m=[0m[91m==
+downloaded 591 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ggpubr_0.6.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2081899 bytes (2.0 MB)
+==========[0m[91m====[0m[91m=====[0m[91m===[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 2.0 MB
+
+[0m[91m* installing *binary* package ‘Matrix’ ...
+[0m[91m* DONE (Matrix)
+[0m[91m* installing *binary* package ‘numDeriv’ ...
+[0m[91m* DONE (numDeriv)
+[0m[91m* installing *binary* package ‘SparseM’ ...
+[0m[91m* DONE (SparseM)
+[0m[91m* installing *binary* package ‘minqa’ ...
+[0m[91m* DONE (minqa)
+[0m[91m* installing *binary* package ‘nloptr’ ...
+[0m[91m* DONE (nloptr)
+[0m[91m* installing *binary* package ‘RcppEigen’ ...
+[0m[91m* DONE (RcppEigen)
+[0m[91m* installing *binary* package ‘pillar’ ...
+[0m[91m* DONE (pillar)
+[0m[91m* installing *binary* package ‘carData’ ...
+[0m[91m* DONE (carData)
+[0m[91m* installing *binary* package ‘abind’ ...
+[0m[91m* DONE (abind)
+[0m[91m* installing *binary* package ‘purrr’ ...
+[0m[91m* DONE (purrr)
+[0m[91m* installing *binary* package ‘stringr’ ...
+[0m[91m* DONE (stringr)
+[0m[91m* installing *binary* package ‘tidyselect’ ...
+[0m[91m* DONE (tidyselect)
+[0m[91m* installing *binary* package ‘corrplot’ ...
+[0m[91m* DONE (corrplot)
+[0m[91m* installing *binary* package ‘ggrepel’ ...
+[0m[91m* DONE (ggrepel)
+[0m[91m* installing *binary* package ‘ggsci’ ...
+[0m[91m* DONE (ggsci)
+[0m[91m* installing *binary* package ‘ggsignif’ ...
+[0m[91m* DONE (ggsignif)
+[0m[91m* installing *binary* package ‘gridExtra’ ...
+[0m[91m* DONE (gridExtra)
+[0m[91m* installing *binary* package ‘polynom’ ...
+[0m[91m* DONE (polynom)
+[0m[91m* installing *binary* package ‘MatrixModels’ ...
+[0m[91m* DONE (MatrixModels)
+[0m[91m* installing *binary* package ‘tibble’ ...
+[0m[91m* DONE (tibble)
+[0m[91m* installing *binary* package ‘lme4’ ...
+[0m[91m* DONE (lme4)
+[0m[91m* installing *binary* package ‘quantreg’ ...
+[0m[91m* DONE (quantreg)
+[0m[91m* installing *binary* package ‘dplyr’ ...
+[0m[91m* DONE (dplyr)
+[0m[91m* installing *binary* package ‘pbkrtest’ ...
+[0m[91m* DONE (pbkrtest)
+[0m[91m* installing *binary* package ‘tidyr’ ...
+[0m[91m* DONE (tidyr)
+[0m[91m* installing *binary* package ‘car’ ...
+[0m[91m* DONE (car)
+[0m[91m* installing *binary* package ‘rstatix’ ...
+[0m[91m* DONE (rstatix)
+[0m[91m* installing *binary* package ‘ggpubr’ ...
+[0m[91m* DONE (ggpubr)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/Rtmp1dEUwL/downloaded_packages’
+[0mRemoving intermediate container 04af9425f3f1
+ ---> beae11e3e955
+Step 13/40 : RUN Rscript -e 'install.packages( "ggrepel")'        # geom_text_repel, geom_label_repel
+ ---> Running in 77ac5313cfee
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ggrepel_0.9.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 272778 bytes (266 KB)
+==[0m[91m===[0m[91m======[0m[91m===[0m[91m======[0m[91m===[0m[91m===[0m[91m===[0m[91m======[0m[91m===[0m[91m===[0m[91m===[0m[91m======
+downloaded 266 KB
+
+[0m[91m* installing *binary* package ‘ggrepel’ ...
+[0m[91m* DONE (ggrepel)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpUVipwH/downloaded_packages’
+[0mRemoving intermediate container 77ac5313cfee
+ ---> 5e03440e0314
+Step 14/40 : RUN Rscript -e 'install.packages( "gridExtra")'      # grid.arrange, ...
+ ---> Running in efabdccf509a
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/gridExtra_2.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1106618 bytes (1.1 MB)
+=[0m[91m=[0m[91m===[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==
+downloaded 1.1 MB
+
+[0m[91m* installing *binary* package ‘gridExtra’ ...
+[0m[91m* DONE (gridExtra)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpZvc5gH/downloaded_packages’
+[0mRemoving intermediate container efabdccf509a
+ ---> 33369fdb0681
+Step 15/40 : RUN Rscript -e 'install.packages( "hexbin")'         # stat_binhex
+ ---> Running in d90ce639f6f6
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/hexbin_1.28.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1595009 bytes (1.5 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m============[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 1.5 MB
+
+[0m[91m* installing *binary* package ‘hexbin’ ...
+[0m[91m* DONE (hexbin)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpfYdcBJ/downloaded_packages’
+[0mRemoving intermediate container d90ce639f6f6
+ ---> 1b49072632f2
+Step 16/40 : RUN Rscript -e 'BiocManager::install( "patchwork")'  # +/ operators for ggplots
+ ---> Running in cd017f55eb4b
+[91m'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://packagemanager.rstudio.com/cran/__linux__/focal/latest
+[0m[91mBioconductor version 3.16 (BiocManager 1.30.22), R 4.2.0 (2022-04-22)
+[0m[91mInstalling package(s) 'BiocVersion', 'patchwork'
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.16/bioc/src/contrib/BiocVersion_3.16.0.tar.gz'
+[0m[91mContent type 'application/gzip' length 965 bytes
+==================================================
+downloaded 965 bytes
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/patchwork_1.1.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 3263392 bytes (3.1 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 3.1 MB
+
+[0m[91m* installing *source* package ‘BiocVersion’ ...
+[0m[91m** using staged installation
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (BiocVersion)
+[0m[91m* installing *binary* package ‘patchwork’ ...
+[0m[91m* DONE (patchwork)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpxPmZYI/downloaded_packages’
+[0m[91mOld packages: 'arrow', 'askpass', 'bit', 'blob', 'brew', 'brio', 'broom',
+  'bslib', 'cachem', 'callr', 'colorspace', 'commonmark', 'cpp11', 'crayon',
+  'credentials', 'curl', 'data.table', 'DBI', 'dbplyr', 'desc', 'devtools',
+  'digest', 'dtplyr', 'duckdb', 'evaluate', 'fansi', 'farver', 'fastmap',
+  'forcats', 'fs', 'fstcore', 'gargle', 'generics', 'gert', 'gh', 'gitcreds',
+  'googledrive', 'googlesheets4', 'gtable', 'haven', 'highr', 'hms', 'httr',
+  'isoband', 'jsonlite', 'labeling', 'Lahman', 'littler', 'lubridate',
+  'modelr', 'openssl', 'pkgbuild', 'pkgload', 'prettyunits', 'processx',
+  'progress', 'ps', 'Rcpp', 'readr', 'readxl', 'rematch', 'remotes', 'reprex',
+  'RMariaDB', 'roxygen2', 'RPostgres', 'rprojroot', 'RSQLite', 'rstudioapi',
+  'rversions', 'rvest', 'sass', 'scales', 'stringi', 'sys', 'testthat',
+  'tidyverse', 'tinytex', 'tzdb', 'usethis', 'utf8', 'uuid', 'viridisLite',
+  'vroom', 'waldo', 'whisker', 'withr', 'xml2', 'yaml', 'zip', 'boot', 'class',
+  'cluster', 'codetools', 'foreign', 'KernSmooth', 'lattice', 'MASS', 'Matrix',
+  'mgcv', 'nlme', 'nnet', 'rpart', 'spatial', 'survival'
+[0mRemoving intermediate container cd017f55eb4b
+ ---> c61c6271722b
+Step 17/40 : RUN Rscript -e 'install.packages( "plotly")'
+ ---> Running in e70feccdc4e6
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependencies ‘later’, ‘htmlwidgets’, ‘lazyeval’, ‘crosstalk’, ‘promises’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/later_1.3.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 133699 bytes (130 KB)
+============[0m[91m======================================
+downloaded 130 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/htmlwidgets_1.6.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 813609 bytes (794 KB)
+==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==
+downloaded 794 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/lazyeval_0.2.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 164066 bytes (160 KB)
+=========[0m[91m=====[0m[91m=====[0m[91m=====[0m[91m=====[0m[91m=====[0m[91m=====[0m[91m=====[0m[91m======
+downloaded 160 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/crosstalk_1.2.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 404824 bytes (395 KB)
+==[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m===[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m====[0m[91m==[0m[91m==[0m[91m==[0m[91m====[0m[91m==[0m[91m===
+downloaded 395 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/promises_1.2.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1649032 bytes (1.6 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.6 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/plotly_4.10.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 3191131 bytes (3.0 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 3.0 MB
+
+[0m[91m* installing *binary* package ‘later’ ...
+[0m[91m* DONE (later)
+[0m[91m* installing *binary* package ‘htmlwidgets’ ...
+[0m[91m* DONE (htmlwidgets)
+[0m[91m* installing *binary* package ‘lazyeval’ ...
+[0m[91m* DONE (lazyeval)
+[0m[91m* installing *binary* package ‘crosstalk’ ...
+[0m[91m* DONE (crosstalk)
+[0m[91m* installing *binary* package ‘promises’ ...
+[0m[91m* DONE (promises)
+[0m[91m* installing *binary* package ‘plotly’ ...
+[0m[91m* DONE (plotly)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpD04KKI/downloaded_packages’
+[0mRemoving intermediate container e70feccdc4e6
+ ---> 61c62771190b
+Step 18/40 : RUN Rscript -e 'install.packages( "gplots")'         # heatmap.2
+ ---> Running in 2a3cd9a27e54
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependencies ‘bitops’, ‘gtools’, ‘caTools’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/bitops_1.0-7.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 35531 bytes (34 KB)
+==================================================
+downloaded 34 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/gtools_3.9.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 352965 bytes (344 KB)
+====[0m[91m=======[0m[91m==[0m[91m=====[0m[91m=====[0m[91m==[0m[91m==[0m[91m=====[0m[91m==[0m[91m==[0m[91m===[0m[91m====[0m[91m===[0m[91m====
+downloaded 344 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/caTools_1.18.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 247917 bytes (242 KB)
+======[0m[91m===[0m[91m=======[0m[91m===[0m[91m====[0m[91m===[0m[91m===[0m[91m=======[0m[91m======[0m[91m====[0m[91m====
+downloaded 242 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/gplots_3.1.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 593912 bytes (579 KB)
+==[0m[91m===========[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=======[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m===
+downloaded 579 KB
+
+[0m[91m* installing *binary* package ‘bitops’ ...
+[0m[91m* DONE (bitops)
+[0m[91m* installing *binary* package ‘gtools’ ...
+[0m[91m* DONE (gtools)
+[0m[91m* installing *binary* package ‘caTools’ ...
+[0m[91m* DONE (caTools)
+[0m[91m* installing *binary* package ‘gplots’ ...
+[0m[91m* DONE (gplots)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpLb3bnI/downloaded_packages’
+[0mRemoving intermediate container 2a3cd9a27e54
+ ---> 72437c4fee2f
+Step 19/40 : RUN Rscript -e 'install.packages( "heatmaply")'      # heatmaply (interactive)
+ ---> Running in 05e7b9e858ca
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependencies ‘iterators’, ‘permute’, ‘plyr’, ‘ca’, ‘foreach’, ‘gclus’, ‘qap’, ‘registry’, ‘TSP’, ‘vegan’, ‘viridis’, ‘dendextend’, ‘reshape2’, ‘seriation’, ‘webshot’, ‘egg’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/iterators_1.0.14.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 345532 bytes (337 KB)
+====[0m[91m=======[0m[91m===================================[0m[91m====
+downloaded 337 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/permute_0.9-7.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 221556 bytes (216 KB)
+=======[0m[91m========[0m[91m============[0m[91m====[0m[91m===[0m[91m==========[0m[91m===[0m[91m===
+downloaded 216 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/plyr_1.8.9.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 818131 bytes (798 KB)
+[0m[91m=[0m[91m==[0m[91m===[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m===[0m[91m=
+downloaded 798 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ca_0.71.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 239781 bytes (234 KB)
+[0m[91m=======[0m[91m===[0m[91m====[0m[91m===[0m[91m====[0m[91m====[0m[91m=====[0m[91m====[0m[91m=======[0m[91m===[0m[91m======
+downloaded 234 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/foreach_1.5.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 138189 bytes (134 KB)
+===========[0m[91m======[0m[91m============[0m[91m============[0m[91m=====[0m[91m====
+downloaded 134 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/gclus_1.3.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 413240 bytes (403 KB)
+==[0m[91m====[0m[91m==[0m[91m==[0m[91m==[0m[91m====[0m[91m=====[0m[91m====[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m====[0m[91m=[0m[91m====
+[0m[91mdownloaded 403 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/qap_0.1-2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 470439 bytes (459 KB)
+=[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m==[0m[91m=[0m[91m=====[0m[91m==[0m[91m=[0m[91m====[0m[91m==[0m[91m===[0m[91m==[0m[91m===
+downloaded 459 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/registry_0.5-1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 193713 bytes (189 KB)
+====[0m[91m====[0m[91m=====[0m[91m====[0m[91m=====[0m[91m========[0m[91m=====[0m[91m=============[0m[91m==
+downloaded 189 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/TSP_1.2-4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 687064 bytes (670 KB)
+===[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m===[0m[91m==[0m[91m==[0m[91m==[0m[91m===[0m[91m=[0m[91m=[0m[91m===[0m[91m=====[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==
+downloaded 670 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/vegan_2.6-4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 3171036 bytes (3.0 MB)
+[0m[91m=[0m[91m=[0m[91m======================[0m[91m======[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 3.0 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/viridis_0.6.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 3027385 bytes (2.9 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m==[0m[91m==[0m[91m====[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 2.9 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/dendextend_1.17.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 3901979 bytes (3.7 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 3.7 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/reshape2_1.4.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 117073 bytes (114 KB)
+=============[0m[91m=======[0m[91m=====================[0m[91m=========
+downloaded 114 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/seriation_1.5.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1329761 bytes (1.3 MB)
+[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 1.3 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/webshot_0.5.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 205102 bytes (200 KB)
+=======[0m[91m====[0m[91m=======[0m[91m====[0m[91m====[0m[91m===[0m[91m========[0m[91m====[0m[91m=========
+downloaded 200 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/egg_0.4.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 825187 bytes (805 KB)
+[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m====[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m===[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m==
+downloaded 805 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/heatmaply_1.5.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1873050 bytes (1.8 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.8 MB
+
+[0m[91m* installing *binary* package ‘iterators’ ...
+[0m[91m* DONE (iterators)
+[0m[91m* installing *binary* package ‘permute’ ...
+[0m[91m* DONE (permute)
+[0m[91m* installing *binary* package ‘plyr’ ...
+[0m[91m* DONE (plyr)
+[0m[91m* installing *binary* package ‘ca’ ...
+[0m[91m* DONE (ca)
+[0m[91m* installing *binary* package ‘gclus’ ...
+[0m[91m* DONE (gclus)
+[0m[91m* installing *binary* package ‘qap’ ...
+[0m[91m* DONE (qap)
+[0m[91m* installing *binary* package ‘registry’ ...
+[0m[91m* DONE (registry)
+[0m[91m* installing *binary* package ‘viridis’ ...
+[0m[91m* DONE (viridis)
+[0m[91m* installing *binary* package ‘webshot’ ...
+[0m[91m* DONE (webshot)
+[0m[91m* installing *binary* package ‘egg’ ...
+[0m[91m* DONE (egg)
+[0m[91m* installing *binary* package ‘foreach’ ...
+[0m[91m* DONE (foreach)
+[0m[91m* installing *binary* package ‘vegan’ ...
+[0m[91m* DONE (vegan)
+[0m[91m* installing *binary* package ‘dendextend’ ...
+[0m[91m* DONE (dendextend)
+[0m[91m* installing *binary* package ‘reshape2’ ...
+[0m[91m* DONE (reshape2)
+[0m[91m* installing *binary* package ‘TSP’ ...
+[0m[91m* DONE (TSP)
+[0m[91m* installing *binary* package ‘seriation’ ...
+[0m[91m* DONE (seriation)
+[0m[91m* installing *binary* package ‘heatmaply’ ...
+[0m[91m* DONE (heatmaply)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpyBj6jI/downloaded_packages’
+[0mRemoving intermediate container 05e7b9e858ca
+ ---> dff7eef2d556
+Step 20/40 : RUN Rscript -e 'BiocManager::install( "iheatmapr")'  # iheatmap (interactive, uses plotly), dependencies OK with BiocManager
+ ---> Running in b7973a4265ee
+[91m'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://packagemanager.rstudio.com/cran/__linux__/focal/latest
+[0m[91mBioconductor version 3.16 (BiocManager 1.30.22), R 4.2.0 (2022-04-22)
+[0m[91mInstalling package(s) 'iheatmapr'
+[0m[91malso installing the dependencies ‘ggdendro’, ‘fastcluster’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ggdendro_0.1.23.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 174396 bytes (170 KB)
+====[0m[91m===[0m[91m=======[0m[91m=====[0m[91m=====[0m[91m=====[0m[91m==========[0m[91m===========
+downloaded 170 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/fastcluster_1.2.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 312549 bytes (305 KB)
+[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m====[0m[91m=======[0m[91m===[0m[91m===========================[0m[91m=
+downloaded 305 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/iheatmapr_0.7.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1639098 bytes (1.6 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==
+[0m[91mdownloaded 1.6 MB
+
+[0m[91m* installing *binary* package ‘ggdendro’ ...
+[0m[91m* DONE (ggdendro)
+[0m[91m* installing *binary* package ‘fastcluster’ ...
+[0m[91m* DONE (fastcluster)
+[0m[91m* installing *binary* package ‘iheatmapr’ ...
+[0m[91m* DONE (iheatmapr)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpkdkQSN/downloaded_packages’
+[0m[91mOld packages: 'arrow', 'askpass', 'bit', 'blob', 'brew', 'brio', 'broom',
+  'bslib', 'cachem', 'callr', 'colorspace', 'commonmark', 'cpp11', 'crayon',
+  'credentials', 'curl', 'data.table', 'DBI', 'dbplyr', 'desc', 'devtools',
+  'digest', 'dtplyr', 'duckdb', 'evaluate', 'fansi', 'farver', 'fastmap',
+  'forcats', 'fs', 'fstcore', 'gargle', 'generics', 'gert', 'gh', 'gitcreds',
+  'googledrive', 'googlesheets4', 'gtable', 'haven', 'highr', 'hms', 'httr',
+  'isoband', 'jsonlite', 'labeling', 'Lahman', 'littler', 'lubridate',
+  'modelr', 'openssl', 'pkgbuild', 'pkgload', 'prettyunits', 'processx',
+  'progress', 'ps', 'Rcpp', 'readr', 'readxl', 'rematch', 'remotes', 'reprex',
+  'RMariaDB', 'roxygen2', 'RPostgres', 'rprojroot', 'RSQLite', 'rstudioapi',
+  'rversions', 'rvest', 'sass', 'scales', 'stringi', 'sys', 'testthat',
+  'tidyverse', 'tinytex', 'tzdb', 'usethis', 'utf8', 'uuid', 'viridisLite',
+  'vroom', 'waldo', 'whisker', 'withr', 'xml2', 'yaml', 'zip', 'boot', 'class',
+  'cluster', 'codetools', 'foreign', 'KernSmooth', 'lattice', 'MASS', 'Matrix',
+  'mgcv', 'nlme', 'nnet', 'rpart', 'spatial', 'survival'
+[0mRemoving intermediate container b7973a4265ee
+ ---> c08c594dc86f
+Step 21/40 : RUN Rscript -e 'install.packages( "pheatmap")'       # pheatmap
+ ---> Running in ada678d7d0bf
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/pheatmap_1.0.12.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 76792 bytes (74 KB)
+==[0m[91m======================[0m[91m============[0m[91m==============
+downloaded 74 KB
+
+[0m[91m* installing *binary* package ‘pheatmap’ ...
+[0m[91m* DONE (pheatmap)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/Rtmp6nlsoH/downloaded_packages’
+[0mRemoving intermediate container ada678d7d0bf
+ ---> 3f3e6f6ede67
+Step 22/40 : RUN Rscript -e 'install.packages( "DT")'             # datatable
+ ---> Running in b4810bffde83
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependency ‘httpuv’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/httpuv_1.6.13.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 600456 bytes (586 KB)
+==[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m==[0m[91m=[0m[91m===[0m[91m=[0m[91m===[0m[91m===[0m[91m=[0m[91m==[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m====[0m[91m==========
+downloaded 586 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/DT_0.31.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1782147 bytes (1.7 MB)
+====[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 1.7 MB
+
+[0m[91m* installing *binary* package ‘httpuv’ ...
+[0m[91m* DONE (httpuv)
+[0m[91m* installing *binary* package ‘DT’ ...
+[0m[91m* DONE (DT)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpOgP4yJ/downloaded_packages’
+[0mRemoving intermediate container b4810bffde83
+ ---> b607afde84e0
+Step 23/40 : RUN Rscript -e 'install.packages( "htmlwidgets")'    # JS (for datatable)
+ ---> Running in d725ca05dab8
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/htmlwidgets_1.6.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 813609 bytes (794 KB)
+=[0m[91m===[0m[91m===[0m[91m=[0m[91m=[0m[91m=====[0m[91m===[0m[91m============[0m[91m===[0m[91m===[0m[91m===[0m[91m======[0m[91m===[0m[91m===
+downloaded 794 KB
+
+[0m[91m* installing *binary* package ‘htmlwidgets’ ...
+[0m[91m* DONE (htmlwidgets)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/Rtmpd1b81G/downloaded_packages’
+[0mRemoving intermediate container d725ca05dab8
+ ---> e380856799ed
+Step 24/40 : RUN Rscript -e 'install.packages( "kableExtra")'     # kable_styling
+ ---> Running in 25c604888c2a
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependencies ‘systemfonts’, ‘svglite’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/systemfonts_1.0.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 278948 bytes (272 KB)
+=====[0m[91m======[0m[91m======[0m[91m===[0m[91m===[0m[91m===========================[0m[91m
+downloaded 272 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/svglite_2.1.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 203021 bytes (198 KB)
+=======[0m[91m====[0m[91m=============[0m[91m============[0m[91m==============[0m[91m
+downloaded 198 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/kableExtra_1.3.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1852360 bytes (1.8 MB)
+=[0m[91m=======[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.8 MB
+
+[0m[91m* installing *binary* package ‘systemfonts’ ...
+[0m[91m* DONE (systemfonts)
+[0m[91m* installing *binary* package ‘svglite’ ...
+[0m[91m* DONE (svglite)
+[0m[91m* installing *binary* package ‘kableExtra’ ...
+[0m[91m* DONE (kableExtra)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpSf5LpK/downloaded_packages’
+[0mRemoving intermediate container 25c604888c2a
+ ---> b6bdcdc62f05
+Step 25/40 : RUN Rscript -e 'install.packages( "pander")'         # pander
+ ---> Running in f95fd3ebf2b0
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/pander_0.6.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 903825 bytes (882 KB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 882 KB
+
+[0m[91m* installing *binary* package ‘pander’ ...
+[0m[91m* DONE (pander)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpBKPTUP/downloaded_packages’
+[0mRemoving intermediate container f95fd3ebf2b0
+ ---> 5920341ee4be
+Step 26/40 : RUN Rscript -e 'install.packages( "digest")'         # digest (hashing)
+ ---> Running in e1d769ca7321
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/digest_0.6.33.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 208399 bytes (203 KB)
+=======[0m[91m========[0m[91m========[0m[91m====[0m[91m====[0m[91m====[0m[91m====[0m[91m====[0m[91m===[0m[91m====
+downloaded 203 KB
+
+[0m[91m* installing *binary* package ‘digest’ ...
+[0m[91m* DONE (digest)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmppaUDWH/downloaded_packages’
+[0mRemoving intermediate container e1d769ca7321
+ ---> a7e576f03730
+Step 27/40 : RUN Rscript -e 'install.packages( "dplyr")'
+ ---> Running in 22b6893fc895
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/dplyr_1.1.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1454459 bytes (1.4 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m====[0m[91m==
+downloaded 1.4 MB
+
+[0m[91m* installing *binary* package ‘dplyr’ ...
+[0m[91m* DONE (dplyr)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpqYq8pI/downloaded_packages’
+[0mRemoving intermediate container 22b6893fc895
+ ---> ab8a640ab46e
+Step 28/40 : RUN Rscript -e 'install.packages( "forcats")'        # fct_inorder (factors)
+ ---> Running in c4d78e033b30
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/forcats_1.0.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 421894 bytes (412 KB)
+===[0m[91m====[0m[91m==============[0m[91m=========[0m[91m==========[0m[91m===[0m[91m====[0m[91m===
+downloaded 412 KB
+
+[0m[91m* installing *binary* package ‘forcats’ ...
+[0m[91m* DONE (forcats)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpPBqYlH/downloaded_packages’
+[0mRemoving intermediate container c4d78e033b30
+ ---> 42cc2805dcad
+Step 29/40 : RUN Rscript -e 'install.packages( "funr")'           # get_script_path
+ ---> Running in c8a989605f4b
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/funr_0.3.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 28238 bytes (27 KB)
+==============================[0m[91m====================
+downloaded 27 KB
+
+[0m[91m* installing *binary* package ‘funr’ ...
+[0m[91m* DONE (funr)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpDVk6DI/downloaded_packages’
+[0mRemoving intermediate container c8a989605f4b
+ ---> 974155bd3c30
+Step 30/40 : RUN Rscript -e 'install.packages( "future")'         # plan (multicore)
+ ---> Running in 8f4fbf223d6f
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependencies ‘globals’, ‘listenv’, ‘parallelly’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/globals_0.16.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 104431 bytes (101 KB)
+================[0m[91m========[0m[91m==========================[0m[91m
+downloaded 101 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/listenv_0.9.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 105246 bytes (102 KB)
+===============[0m[91m======[0m[91m========[0m[91m=====================[0m[91m
+downloaded 102 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/parallelly_1.36.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 348983 bytes (340 KB)
+====[0m[91m=====[0m[91m=====[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m==[0m[91m=====[0m[91m=====[0m[91m=
+downloaded 340 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/future_1.33.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 643142 bytes (628 KB)
+==[0m[91m=====[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==============================
+downloaded 628 KB
+
+[0m[91m* installing *binary* package ‘globals’ ...
+[0m[91m* DONE (globals)
+[0m[91m* installing *binary* package ‘listenv’ ...
+[0m[91m* DONE (listenv)
+[0m[91m* installing *binary* package ‘parallelly’ ...
+[0m[91m* DONE (parallelly)
+[0m[91m* installing *binary* package ‘future’ ...
+[0m[91m* DONE (future)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpbnZPZK/downloaded_packages’
+[0mRemoving intermediate container 8f4fbf223d6f
+ ---> 5470f3e219f0
+Step 31/40 : RUN Rscript -e 'install.packages( "fs")'             # path_sanitize
+ ---> Running in bb5b8bc7805a
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/fs_1.6.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 284561 bytes (277 KB)
+=====[0m[91m===[0m[91m===[0m[91m======[0m[91m===[0m[91m===[0m[91m==[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m=======
+downloaded 277 KB
+
+[0m[91m* installing *binary* package ‘fs’ ...
+[0m[91m* DONE (fs)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpAecvuH/downloaded_packages’
+[0mRemoving intermediate container bb5b8bc7805a
+ ---> c5564f874b8d
+Step 32/40 : RUN Rscript -e 'install.packages( "magrittr")'
+ ---> Running in d4b6e6e89b3c
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/magrittr_2.0.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 234989 bytes (229 KB)
+=====[0m[91m====[0m[91m=======[0m[91m====[0m[91m====[0m[91m==========[0m[91m=======[0m[91m====[0m[91m=====
+downloaded 229 KB
+
+[0m[91m* installing *binary* package ‘magrittr’ ...
+[0m[91m* DONE (magrittr)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpxrRMWJ/downloaded_packages’
+[0mRemoving intermediate container d4b6e6e89b3c
+ ---> b47256aade44
+Step 33/40 : RUN Rscript -e 'install.packages( "reshape")'        # melt
+ ---> Running in b828f7af971f
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/reshape_0.8.9.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 165409 bytes (161 KB)
+=====[0m[91m=======[0m[91m===[0m[91m====[0m[91m=======[0m[91m======[0m[91m=========[0m[91m=========
+downloaded 161 KB
+
+[0m[91m* installing *binary* package ‘reshape’ ...
+[0m[91m* DONE (reshape)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/Rtmppy9F1G/downloaded_packages’
+[0mRemoving intermediate container b828f7af971f
+ ---> d89a8e219adf
+Step 34/40 : RUN Rscript -e 'install.packages( "scales")'         # hue_pal
+ ---> Running in f19cc32568ad
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/scales_1.3.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 699223 bytes (682 KB)
+=[0m[91m====[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m===[0m[91m=[0m[91m==[0m[91m====[0m[91m==[0m[91m=[0m[91m====[0m[91m==[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=====
+downloaded 682 KB
+
+[0m[91m* installing *binary* package ‘scales’ ...
+[0m[91m* DONE (scales)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpyRbruH/downloaded_packages’
+[0mRemoving intermediate container f19cc32568ad
+ ---> a966a9765fc2
+Step 35/40 : RUN Rscript -e 'BiocManager::install( "Seurat")'
+ ---> Running in 387d8a8d8f97
+[91m'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://packagemanager.rstudio.com/cran/__linux__/focal/latest
+[0m[91mBioconductor version 3.16 (BiocManager 1.30.22), R 4.2.0 (2022-04-22)
+[0m[91mInstalling package(s) 'Seurat'
+[0m[91malso installing the dependencies ‘dotCall64’, ‘tensor’, ‘BH’, ‘sitmo’, ‘sp’, ‘spam’, ‘cpp11’, ‘zoo’, ‘RcppTOML’, ‘here’, ‘RcppArmadillo’, ‘xtable’, ‘sourcetools’, ‘fastmap’, ‘spatstat.data’, ‘spatstat.random’, ‘spatstat.utils’, ‘spatstat.sparse’, ‘goftest’, ‘deldir’, ‘polyclip’, ‘FNN’, ‘dqrng’, ‘SeuratObject’, ‘fastDummies’, ‘fitdistrplus’, ‘future.apply’, ‘generics’, ‘ggridges’, ‘ica’, ‘igraph’, ‘irlba’, ‘leiden’, ‘lmtest’, ‘matrixStats’, ‘miniUI’, ‘pbapply’, ‘png’, ‘progressr’, ‘RANN’, ‘RcppAnnoy’, ‘RcppHNSW’, ‘reticulate’, ‘ROCR’, ‘RSpectra’, ‘Rtsne’, ‘scattermore’, ‘sctransform’, ‘shiny’, ‘spatstat.explore’, ‘spatstat.geom’, ‘uwot’, ‘RcppProgress’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/dotCall64_1.1-1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 30561 bytes (29 KB)
+==================================================
+downloaded 29 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/tensor_1.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 13417 bytes (13 KB)
+==================================================
+downloaded 13 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/BH_1.81.0-1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 12941610 bytes (12.3 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 12.3 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/sitmo_2.0.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 171377 bytes (167 KB)
+====[0m[91m===[0m[91m=======[0m[91m=====[0m[91m=====[0m[91m=====[0m[91m==========[0m[91m=====[0m[91m======
+downloaded 167 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/sp_2.1-2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2055861 bytes (2.0 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m===[0m[91m==[0m[91m==[0m[91m====[0m[91m==[0m[91m==[0m[91m=
+[0m[91mdownloaded 2.0 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/spam_2.10-0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2744225 bytes (2.6 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 2.6 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/cpp11_0.4.7.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 280169 bytes (273 KB)
+=====[0m[91m======[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m==[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m===[0m[91m====
+downloaded 273 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/zoo_1.8-12.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1013862 bytes (990 KB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==
+downloaded 990 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RcppTOML_0.2.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 241794 bytes (236 KB)
+=====[0m[91m===[0m[91m========[0m[91m==[0m[91m=======[0m[91m====[0m[91m===[0m[91m===[0m[91m===[0m[91m====[0m[91m===[0m[91m=====
+downloaded 236 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/here_1.0.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 52508 bytes (51 KB)
+==============================[0m[91m====================
+downloaded 51 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RcppArmadillo_0.12.6.6.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1081928 bytes (1.0 MB)
+=[0m[91m=[0m[91m=[0m[91m===[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m==
+downloaded 1.0 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/xtable_1.8-4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 700071 bytes (683 KB)
+=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m==[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==
+[0m[91mdownloaded 683 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/sourcetools_0.1.7-1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 46900 bytes (45 KB)
+==================================[0m[91m================
+downloaded 45 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/fastmap_1.1.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 62097 bytes (60 KB)
+==================================================
+downloaded 60 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/spatstat.data_3.0-3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 4098078 bytes (3.9 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=================[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 3.9 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/spatstat.random_3.2-2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1140317 bytes (1.1 MB)
+=[0m[91m===[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.1 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/spatstat.utils_3.0-4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 367260 bytes (358 KB)
+===[0m[91m=====[0m[91m==[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m=[0m[91m===[0m[91m==[0m[91m==[0m[91m====[0m[91m===[0m[91m==[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m==[0m[91m===
+downloaded 358 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/spatstat.sparse_3.0-3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 209501 bytes (204 KB)
+=======[0m[91m====[0m[91m========[0m[91m========[0m[91m====[0m[91m====[0m[91m===[0m[91m=====[0m[91m=======
+downloaded 204 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/goftest_1.2-3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 66258 bytes (64 KB)
+=====[0m[91m========================[0m[91m===[0m[91m==================
+downloaded 64 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/deldir_2.0-2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 271427 bytes (265 KB)
+==[0m[91m===[0m[91m======[0m[91m======[0m[91m===[0m[91m===[0m[91m======[0m[91m===[0m[91m=======[0m[91m======[0m[91m=====
+downloaded 265 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/polyclip_1.10-6.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 116948 bytes (114 KB)
+==========[0m[91m==============[0m[91m=======[0m[91m=======[0m[91m============
+downloaded 114 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/FNN_1.1.3.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 123754 bytes (120 KB)
+=============[0m[91m======[0m[91m===============================[0m[91m
+downloaded 120 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/dqrng_0.3.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 168208 bytes (164 KB)
+=====[0m[91m==========[0m[91m=====[0m[91m=====[0m[91m====[0m[91m=====[0m[91m=======[0m[91m=========
+downloaded 164 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/SeuratObject_5.0.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2020347 bytes (1.9 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 1.9 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/fastDummies_1.7.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 40729 bytes (39 KB)
+==================================================
+downloaded 39 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/fitdistrplus_1.1-11.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1970873 bytes (1.9 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 1.9 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/future.apply_1.11.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 152119 bytes (148 KB)
+[0m[91m======[0m[91m=====[0m[91m=====[0m[91m===========[0m[91m============[0m[91m===========
+downloaded 148 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/generics_0.1.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 73627 bytes (71 KB)
+======================[0m[91m============================
+downloaded 71 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ggridges_0.5.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2255008 bytes (2.2 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 2.2 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ica_1.0-3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 84211 bytes (82 KB)
+==========[0m[91m====================[0m[91m========[0m[91m============
+downloaded 82 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/igraph_1.6.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 4821723 bytes (4.6 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==============[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 4.6 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/irlba_2.3.5.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 289830 bytes (283 KB)
+=====[0m[91m==[0m[91m===[0m[91m======[0m[91m=====[0m[91m===[0m[91m===[0m[91m=====[0m[91m===[0m[91m===[0m[91m=====[0m[91m===[0m[91m====
+downloaded 283 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/leiden_0.4.3.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2879468 bytes (2.7 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 2.7 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/lmtest_0.9-40.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 402394 bytes (392 KB)
+==[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m===[0m[91m===[0m[91m====[0m[91m===[0m[91m==[0m[91m====[0m[91m==[0m[91m====[0m[91m==[0m[91m==[0m[91m==[0m[91m====[0m[91m==[0m[91m===
+downloaded 392 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/matrixStats_1.2.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 465761 bytes (454 KB)
+===[0m[91m==[0m[91m===[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m====[0m[91m=[0m[91m====[0m[91m===[0m[91m==[0m[91m=====[0m[91m====[0m[91m====[0m[91m===[0m[91m===
+downloaded 454 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/miniUI_0.1.1.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 34126 bytes (33 KB)
+==================================================
+downloaded 33 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/pbapply_1.7-2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 98735 bytes (96 KB)
+========[0m[91m==================[0m[91m================[0m[91m========
+downloaded 96 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/png_0.1-8.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 39778 bytes (38 KB)
+===============================[0m[91m===================
+downloaded 38 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/progressr_0.14.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 380565 bytes (371 KB)
+====[0m[91m======[0m[91m===[0m[91m=======[0m[91m==[0m[91m==[0m[91m=====[0m[91m==[0m[91m====[0m[91m====[0m[91m==[0m[91m=====[0m[91m==[0m[91m==
+downloaded 371 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RANN_2.6.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 212145 bytes (207 KB)
+[0m[91m====[0m[91m====[0m[91m===[0m[91m=[0m[91m====[0m[91m=======[0m[91m=====[0m[91m====[0m[91m========[0m[91m====[0m[91m======
+downloaded 207 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RcppAnnoy_0.0.21.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 269111 bytes (262 KB)
+==[0m[91m=======[0m[91m==[0m[91m======[0m[91m====[0m[91m===[0m[91m==[0m[91m===[0m[91m=====[0m[91m===[0m[91m======[0m[91m===[0m[91m====
+downloaded 262 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RcppHNSW_0.5.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 208044 bytes (203 KB)
+====[0m[91m====[0m[91m========[0m[91m===[0m[91m====[0m[91m====[0m[91m====[0m[91m========[0m[91m===[0m[91m========
+downloaded 203 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/reticulate_1.34.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1847263 bytes (1.8 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m====[0m[91m=[0m[91m==
+downloaded 1.8 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/ROCR_1.0-11.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 449209 bytes (438 KB)
+===[0m[91m===[0m[91m=[0m[91m==[0m[91m==[0m[91m====[0m[91m===[0m[91m==[0m[91m===[0m[91m======[0m[91m==[0m[91m==[0m[91m===[0m[91m====[0m[91m===[0m[91m==[0m[91m=====
+downloaded 438 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RSpectra_0.16-1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 500547 bytes (488 KB)
+=[0m[91m==[0m[91m==[0m[91m===[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m====[0m[91m==[0m[91m===[0m[91m=[0m[91m==[0m[91m====[0m[91m====[0m[91m==[0m[91m======[0m[91m===[0m[91m=[0m[91m===
+downloaded 488 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/Rtsne_0.17.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 110334 bytes (107 KB)
+=======[0m[91m===============[0m[91m=======[0m[91m========[0m[91m=============
+downloaded 107 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/scattermore_1.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 336465 bytes (328 KB)
+==========================[0m[91m=====[0m[91m==[0m[91m==[0m[91m====[0m[91m==[0m[91m===[0m[91m====[0m[91m==
+downloaded 328 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/sctransform_0.4.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 568781 bytes (555 KB)
+[0m[91m===[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m===[0m[91m==[0m[91m=[0m[91m===[0m[91m===[0m[91m=[0m[91m====[0m[91m===[0m[91m=[0m[91m===[0m[91m==[0m[91m===[0m[91m=[0m[91m===[0m[91m=====
+downloaded 555 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/shiny_1.8.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 4429784 bytes (4.2 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==
+downloaded 4.2 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/spatstat.explore_3.2-5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 3331255 bytes (3.2 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 3.2 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/spatstat.geom_3.2-7.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 3944926 bytes (3.8 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=================[0m[91m===================[0m[91m===========
+downloaded 3.8 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/uwot_0.1.16.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 720903 bytes (704 KB)
+[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m====[0m[91m==[0m[91m=[0m[91m===[0m[91m===[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m==
+downloaded 704 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RcppProgress_0.4.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 19756 bytes (19 KB)
+==================================================[0m[91m
+downloaded 19 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/Seurat_5.0.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2554985 bytes (2.4 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 2.4 MB
+
+[0m[91m* installing *binary* package ‘dotCall64’ ...
+[0m[91m* DONE (dotCall64)
+[0m[91m* installing *binary* package ‘tensor’ ...
+[0m[91m* DONE (tensor)
+[0m[91m* installing *binary* package ‘BH’ ...
+[0m[91m* DONE (BH)
+[0m[91m* installing *binary* package ‘sitmo’ ...
+[0m[91m* DONE (sitmo)
+[0m[91m* installing *binary* package ‘sp’ ...
+[0m[91m* DONE (sp)
+[0m[91m* installing *binary* package ‘cpp11’ ...
+[0m[91m* DONE (cpp11)
+[0m[91m* installing *binary* package ‘zoo’ ...
+[0m[91m* DONE (zoo)
+[0m[91m* installing *binary* package ‘RcppTOML’ ...
+[0m[91m* DONE (RcppTOML)
+[0m[91m* installing *binary* package ‘here’ ...
+[0m[91m* DONE (here)
+[0m[91m* installing *binary* package ‘RcppArmadillo’ ...
+[0m[91m* DONE (RcppArmadillo)
+[0m[91m* installing *binary* package ‘xtable’ ...
+[0m[91m* DONE (xtable)
+[0m[91m* installing *binary* package ‘sourcetools’ ...
+[0m[91m* DONE (sourcetools)
+[0m[91m* installing *binary* package ‘fastmap’ ...
+[0m[91m* DONE (fastmap)
+[0m[91m* installing *binary* package ‘spatstat.utils’ ...
+[0m[91m* DONE (spatstat.utils)
+[0m[91m* installing *binary* package ‘goftest’ ...
+[0m[91m* DONE (goftest)
+[0m[91m* installing *binary* package ‘deldir’ ...
+[0m[91m* DONE (deldir)
+[0m[91m* installing *binary* package ‘polyclip’ ...
+[0m[91m* DONE (polyclip)
+[0m[91m* installing *binary* package ‘FNN’ ...
+[0m[91m* DONE (FNN)
+[0m[91m* installing *binary* package ‘fastDummies’ ...
+[0m[91m* DONE (fastDummies)
+[0m[91m* installing *binary* package ‘fitdistrplus’ ...
+[0m[91m* DONE (fitdistrplus)
+[0m[91m* installing *binary* package ‘future.apply’ ...
+[0m[91m* DONE (future.apply)
+[0m[91m* installing *binary* package ‘generics’ ...
+[0m[91m* DONE (generics)
+[0m[91m* installing *binary* package ‘ggridges’ ...
+[0m[91m* DONE (ggridges)
+[0m[91m* installing *binary* package ‘ica’ ...
+[0m[91m* DONE (ica)
+[0m[91m* installing *binary* package ‘irlba’ ...
+[0m[91m* DONE (irlba)
+[0m[91m* installing *binary* package ‘matrixStats’ ...
+[0m[91m* DONE (matrixStats)
+[0m[91m* installing *binary* package ‘pbapply’ ...
+[0m[91m* DONE (pbapply)
+[0m[91m* installing *binary* package ‘png’ ...
+[0m[91m* DONE (png)
+[0m[91m* installing *binary* package ‘progressr’ ...
+[0m[91m* DONE (progressr)
+[0m[91m* installing *binary* package ‘RANN’ ...
+[0m[91m* DONE (RANN)
+[0m[91m* installing *binary* package ‘RcppAnnoy’ ...
+[0m[91m* DONE (RcppAnnoy)
+[0m[91m* installing *binary* package ‘RcppHNSW’ ...
+[0m[91m* DONE (RcppHNSW)
+[0m[91m* installing *binary* package ‘ROCR’ ...
+[0m[91m* DONE (ROCR)
+[0m[91m* installing *binary* package ‘RSpectra’ ...
+[0m[91m* DONE (RSpectra)
+[0m[91m* installing *binary* package ‘Rtsne’ ...
+[0m[91m* DONE (Rtsne)
+[0m[91m* installing *binary* package ‘scattermore’ ...
+[0m[91m* DONE (scattermore)
+[0m[91m* installing *binary* package ‘RcppProgress’ ...
+[0m[91m* DONE (RcppProgress)
+[0m[91m* installing *binary* package ‘spam’ ...
+[0m[91m* DONE (spam)
+[0m[91m* installing *binary* package ‘spatstat.data’ ...
+[0m[91m* DONE (spatstat.data)
+[0m[91m* installing *binary* package ‘spatstat.sparse’ ...
+[0m[91m* DONE (spatstat.sparse)
+[0m[91m* installing *binary* package ‘dqrng’ ...
+[0m[91m* DONE (dqrng)
+[0m[91m* installing *binary* package ‘igraph’ ...
+[0m[91m* DONE (igraph)
+[0m[91m* installing *binary* package ‘lmtest’ ...
+[0m[91m* DONE (lmtest)
+[0m[91m* installing *binary* package ‘reticulate’ ...
+[0m[91m* DONE (reticulate)
+[0m[91m* installing *binary* package ‘sctransform’ ...
+[0m[91m* DONE (sctransform)
+[0m[91m* installing *binary* package ‘shiny’ ...
+[0m[91m* DONE (shiny)
+[0m[91m* installing *binary* package ‘SeuratObject’ ...
+[0m[91m* DONE (SeuratObject)
+[0m[91m* installing *binary* package ‘leiden’ ...
+[0m[91m* DONE (leiden)
+[0m[91m* installing *binary* package ‘miniUI’ ...
+[0m[91m* DONE (miniUI)
+[0m[91m* installing *binary* package ‘spatstat.geom’ ...
+[0m[91m* DONE (spatstat.geom)
+[0m[91m* installing *binary* package ‘uwot’ ...
+[0m[91m* DONE (uwot)
+[0m[91m* installing *binary* package ‘spatstat.random’ ...
+[0m[91m* DONE (spatstat.random)
+[0m[91m* installing *binary* package ‘spatstat.explore’ ...
+[0m[91m* DONE (spatstat.explore)
+[0m[91m* installing *binary* package ‘Seurat’ ...
+[0m[91m* DONE (Seurat)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpTD8e4J/downloaded_packages’
+[0m[91mOld packages: 'arrow', 'askpass', 'bit', 'blob', 'brew', 'brio', 'broom',
+  'bslib', 'cachem', 'callr', 'colorspace', 'commonmark', 'crayon',
+  'credentials', 'curl', 'data.table', 'DBI', 'dbplyr', 'desc', 'devtools',
+  'dtplyr', 'duckdb', 'evaluate', 'fansi', 'farver', 'fstcore', 'gargle',
+  'gert', 'gh', 'gitcreds', 'googledrive', 'googlesheets4', 'gtable', 'haven',
+  'highr', 'hms', 'httr', 'isoband', 'jsonlite', 'labeling', 'Lahman',
+  'littler', 'lubridate', 'modelr', 'openssl', 'pkgbuild', 'pkgload',
+  'prettyunits', 'processx', 'progress', 'ps', 'Rcpp', 'readr', 'readxl',
+  'rematch', 'remotes', 'reprex', 'RMariaDB', 'roxygen2', 'RPostgres',
+  'rprojroot', 'RSQLite', 'rstudioapi', 'rversions', 'rvest', 'sass',
+  'stringi', 'sys', 'testthat', 'tidyverse', 'tinytex', 'tzdb', 'usethis',
+  'utf8', 'uuid', 'viridisLite', 'vroom', 'waldo', 'whisker', 'withr', 'xml2',
+  'yaml', 'zip', 'boot', 'class', 'cluster', 'codetools', 'foreign',
+  'KernSmooth', 'lattice', 'MASS', 'Matrix', 'mgcv', 'nlme', 'nnet', 'rpart',
+  'spatial', 'survival'
+[0mRemoving intermediate container 387d8a8d8f97
+ ---> 624ba0af37fd
+Step 36/40 : RUN Rscript -e 'BiocManager::install("pcaMethods")'
+ ---> Running in d513c74af144
+[91m'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://packagemanager.rstudio.com/cran/__linux__/focal/latest
+[0m[91mBioconductor version 3.16 (BiocManager 1.30.22), R 4.2.0 (2022-04-22)
+[0m[91mInstalling package(s) 'pcaMethods'
+[0m[91malso installing the dependencies ‘Biobase’, ‘BiocGenerics’
+
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.16/bioc/src/contrib/Biobase_2.58.0.tar.gz'
+[0m[91mContent type 'application/gzip' length 1792896 bytes (1.7 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 1.7 MB
+
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.16/bioc/src/contrib/BiocGenerics_0.44.0.tar.gz'
+[0m[91mContent type 'application/gzip' length 47711 bytes (46 KB)
+[0m[91m=================[0m[91m=================[0m[91m================
+downloaded 46 KB
+
+[0m[91mtrying URL 'https://bioconductor.org/packages/3.16/bioc/src/contrib/pcaMethods_1.90.0.tar.gz'
+[0m[91mContent type 'application/gzip' length 603362 bytes (589 KB)
+[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=
+downloaded 589 KB
+
+[0m[91m* installing *source* package ‘BiocGenerics’ ...
+[0m[91m** using staged installation
+[0m[91m** R
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0mCreating a new generic function for ‘aperm’ in package ‘BiocGenerics’
+Creating a new generic function for ‘append’ in package ‘BiocGenerics’
+Creating a new generic function for ‘as.data.frame’ in package ‘BiocGenerics’
+Creating a new generic function for ‘cbind’ in package ‘BiocGenerics’
+Creating a new generic function for ‘rbind’ in package ‘BiocGenerics’
+Creating a new generic function for ‘do.call’ in package ‘BiocGenerics’
+Creating a new generic function for ‘duplicated’ in package ‘BiocGenerics’
+Creating a new generic function for ‘anyDuplicated’ in package ‘BiocGenerics’
+Creating a new generic function for ‘eval’ in package ‘BiocGenerics’
+Creating a new generic function for ‘pmax’ in package ‘BiocGenerics’
+Creating a new generic function for ‘pmin’ in package ‘BiocGenerics’
+Creating a new generic function for ‘pmax.int’ in package ‘BiocGenerics’
+Creating a new generic function for ‘pmin.int’ in package ‘BiocGenerics’
+Creating a new generic function for ‘Reduce’ in package ‘BiocGenerics’
+Creating a new generic function for ‘Filter’ in package ‘BiocGenerics’
+Creating a new generic function for ‘Find’ in package ‘BiocGenerics’
+Creating a new generic function for ‘Map’ in package ‘BiocGenerics’
+Creating a new generic function for ‘Position’ in package ‘BiocGenerics’
+Creating a new generic function for ‘get’ in package ‘BiocGenerics’
+Creating a new generic function for ‘mget’ in package ‘BiocGenerics’
+Creating a new generic function for ‘grep’ in package ‘BiocGenerics’
+Creating a new generic function for ‘grepl’ in package ‘BiocGenerics’
+Creating a new generic function for ‘is.unsorted’ in package ‘BiocGenerics’
+Creating a new generic function for ‘lapply’ in package ‘BiocGenerics’
+Creating a new generic function for ‘sapply’ in package ‘BiocGenerics’
+Creating a new generic function for ‘mapply’ in package ‘BiocGenerics’
+Creating a new generic function for ‘match’ in package ‘BiocGenerics’
+Creating a new generic function for ‘order’ in package ‘BiocGenerics’
+Creating a new generic function for ‘paste’ in package ‘BiocGenerics’
+Creating a new generic function for ‘rank’ in package ‘BiocGenerics’
+Creating a new generic function for ‘rownames’ in package ‘BiocGenerics’
+Creating a new generic function for ‘colnames’ in package ‘BiocGenerics’
+Creating a new generic function for ‘union’ in package ‘BiocGenerics’
+Creating a new generic function for ‘intersect’ in package ‘BiocGenerics’
+Creating a new generic function for ‘setdiff’ in package ‘BiocGenerics’
+Creating a new generic function for ‘sort’ in package ‘BiocGenerics’
+Creating a new generic function for ‘table’ in package ‘BiocGenerics’
+Creating a new generic function for ‘tapply’ in package ‘BiocGenerics’
+Creating a new generic function for ‘unique’ in package ‘BiocGenerics’
+Creating a new generic function for ‘unsplit’ in package ‘BiocGenerics’
+Creating a new generic function for ‘var’ in package ‘BiocGenerics’
+Creating a new generic function for ‘sd’ in package ‘BiocGenerics’
+Creating a new generic function for ‘which.min’ in package ‘BiocGenerics’
+Creating a new generic function for ‘which.max’ in package ‘BiocGenerics’
+Creating a new generic function for ‘IQR’ in package ‘BiocGenerics’
+Creating a new generic function for ‘mad’ in package ‘BiocGenerics’
+Creating a new generic function for ‘xtabs’ in package ‘BiocGenerics’
+Creating a new generic function for ‘basename’ in package ‘BiocGenerics’
+Creating a new generic function for ‘dirname’ in package ‘BiocGenerics’
+[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (BiocGenerics)
+[0m[91m* installing *source* package ‘Biobase’ ...
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mgcc -I"/usr/local/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c Rinit.c -o Rinit.o
+gcc -I"/usr/local/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c anyMissing.c -o anyMissing.o
+gcc -I"/usr/local/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c envir.c -o envir.o
+gcc -I"/usr/local/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c matchpt.c -o matchpt.o
+gcc -I"/usr/local/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c rowMedians.c -o rowMedians.o
+gcc -I"/usr/local/lib/R/include" -DNDEBUG   -I/usr/local/include   -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c sublist_extract.c -o sublist_extract.o
+gcc -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o Biobase.so Rinit.o anyMissing.o envir.o matchpt.o rowMedians.o sublist_extract.o -L/usr/local/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-Biobase/00new/Biobase/libs
+[0m[91m** R
+[0m[91m** data
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (Biobase)
+[0m[91m* installing *source* package ‘pcaMethods’ ...
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mg++ -std=gnu++14 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++14 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include   -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c nipals.cpp -o nipals.o
+g++ -std=gnu++14 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o pcaMethods.so RcppExports.o nipals.o -L/usr/local/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-pcaMethods/00new/pcaMethods/libs
+[0m[91m** R
+[0m[91m** data
+[0m[91m** inst
+[0m[91m** byte-compile and prepare package for lazy loading
+[0mCreating a new generic function for ‘loadings’ in package ‘pcaMethods’
+[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** installing vignettes
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (pcaMethods)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpEQgxiL/downloaded_packages’
+[0m[91mOld packages: 'arrow', 'askpass', 'bit', 'blob', 'brew', 'brio', 'broom',
+  'bslib', 'cachem', 'callr', 'colorspace', 'commonmark', 'crayon',
+  'credentials', 'curl', 'data.table', 'DBI', 'dbplyr', 'desc', 'devtools',
+  'dtplyr', 'duckdb', 'evaluate', 'fansi', 'farver', 'fstcore', 'gargle',
+  'gert', 'gh', 'gitcreds', 'googledrive', 'googlesheets4', 'gtable', 'haven',
+  'highr', 'hms', 'httr', 'isoband', 'jsonlite', 'labeling', 'Lahman',
+  'littler', 'lubridate', 'modelr', 'openssl', 'pkgbuild', 'pkgload',
+  'prettyunits', 'processx', 'progress', 'ps', 'Rcpp', 'readr', 'readxl',
+  'rematch', 'remotes', 'reprex', 'RMariaDB', 'roxygen2', 'RPostgres',
+  'rprojroot', 'RSQLite', 'rstudioapi', 'rversions', 'rvest', 'sass',
+  'stringi', 'sys', 'testthat', 'tidyverse', 'tinytex', 'tzdb', 'usethis',
+  'utf8', 'uuid', 'viridisLite', 'vroom', 'waldo', 'whisker', 'withr', 'xml2',
+  'yaml', 'zip', 'boot', 'class', 'cluster', 'codetools', 'foreign',
+  'KernSmooth', 'lattice', 'MASS', 'Matrix', 'mgcv', 'nlme', 'nnet', 'rpart',
+  'spatial', 'survival'
+[0mRemoving intermediate container d513c74af144
+ ---> 5f862d01f78c
+Step 37/40 : RUN apt-get install -y libglpk-dev
+ ---> Running in 6dd2b581bec8
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libamd2 libbtf1 libcamd2 libccolamd2 libcholmod3 libcolamd2 libcxsparse3
+  libglpk40 libgmp-dev libgmp10 libgmpxx4ldbl libgraphblas3 libklu1 libldl2
+  libmetis5 libmongoose2 librbio2 libspqr2 libsuitesparse-dev
+  libsuitesparseconfig5 libumfpack5
+Suggested packages:
+  libiodbc2-dev gmp-doc libgmp10-doc libmpfr-dev
+The following NEW packages will be installed:
+  libamd2 libbtf1 libcamd2 libccolamd2 libcholmod3 libcolamd2 libcxsparse3
+  libglpk-dev libglpk40 libgmp-dev libgmpxx4ldbl libgraphblas3 libklu1 libldl2
+  libmetis5 libmongoose2 librbio2 libspqr2 libsuitesparse-dev
+  libsuitesparseconfig5 libumfpack5
+The following packages will be upgraded:
+  libgmp10
+1 upgraded, 21 newly installed, 0 to remove and 160 not upgraded.
+Need to get 10.4 MB of archives.
+After this operation, 128 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libgmp10 amd64 2:6.2.0+dfsg-4ubuntu0.1 [241 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 libsuitesparseconfig5 amd64 1:5.7.1+dfsg-2 [9,736 B]
+Get:3 http://archive.ubuntu.com/ubuntu focal/main amd64 libamd2 amd64 1:5.7.1+dfsg-2 [20.0 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal/main amd64 libbtf1 amd64 1:5.7.1+dfsg-2 [11.3 kB]
+Get:5 http://archive.ubuntu.com/ubuntu focal/main amd64 libcamd2 amd64 1:5.7.1+dfsg-2 [21.7 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal/main amd64 libccolamd2 amd64 1:5.7.1+dfsg-2 [23.2 kB]
+Get:7 http://archive.ubuntu.com/ubuntu focal/main amd64 libcolamd2 amd64 1:5.7.1+dfsg-2 [17.0 kB]
+Get:8 http://archive.ubuntu.com/ubuntu focal/main amd64 libmetis5 amd64 5.1.0.dfsg-5 [169 kB]
+Get:9 http://archive.ubuntu.com/ubuntu focal/main amd64 libcholmod3 amd64 1:5.7.1+dfsg-2 [308 kB]
+Get:10 http://archive.ubuntu.com/ubuntu focal/main amd64 libcxsparse3 amd64 1:5.7.1+dfsg-2 [64.2 kB]
+Get:11 http://archive.ubuntu.com/ubuntu focal/universe amd64 libglpk40 amd64 4.65-2 [378 kB]
+Get:12 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libgmpxx4ldbl amd64 2:6.2.0+dfsg-4ubuntu0.1 [9,144 B]
+Get:13 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 libgmp-dev amd64 2:6.2.0+dfsg-4ubuntu0.1 [320 kB]
+Get:14 http://archive.ubuntu.com/ubuntu focal/main amd64 libgraphblas3 amd64 1:5.7.1+dfsg-2 [3,770 kB]
+Get:15 http://archive.ubuntu.com/ubuntu focal/main amd64 libklu1 amd64 1:5.7.1+dfsg-2 [71.7 kB]
+Get:16 http://archive.ubuntu.com/ubuntu focal/main amd64 libldl2 amd64 1:5.7.1+dfsg-2 [11.0 kB]
+Get:17 http://archive.ubuntu.com/ubuntu focal/main amd64 libmongoose2 amd64 1:5.7.1+dfsg-2 [31.4 kB]
+Get:18 http://archive.ubuntu.com/ubuntu focal/main amd64 libumfpack5 amd64 1:5.7.1+dfsg-2 [229 kB]
+Get:19 http://archive.ubuntu.com/ubuntu focal/main amd64 librbio2 amd64 1:5.7.1+dfsg-2 [24.5 kB]
+Get:20 http://archive.ubuntu.com/ubuntu focal/main amd64 libspqr2 amd64 1:5.7.1+dfsg-2 [64.8 kB]
+Get:21 http://archive.ubuntu.com/ubuntu focal/main amd64 libsuitesparse-dev amd64 1:5.7.1+dfsg-2 [4,161 kB]
+Get:22 http://archive.ubuntu.com/ubuntu focal/universe amd64 libglpk-dev amd64 4.65-2 [445 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 10.4 MB in 1s (9,340 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 27804 files and directories currently installed.)
+Preparing to unpack .../libgmp10_2%3a6.2.0+dfsg-4ubuntu0.1_amd64.deb ...
+Unpacking libgmp10:amd64 (2:6.2.0+dfsg-4ubuntu0.1) over (2:6.2.0+dfsg-4) ...
+Setting up libgmp10:amd64 (2:6.2.0+dfsg-4ubuntu0.1) ...
+Selecting previously unselected package libsuitesparseconfig5:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 27804 files and directories currently installed.)
+Preparing to unpack .../00-libsuitesparseconfig5_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libsuitesparseconfig5:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libamd2:amd64.
+Preparing to unpack .../01-libamd2_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libamd2:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libbtf1:amd64.
+Preparing to unpack .../02-libbtf1_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libbtf1:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libcamd2:amd64.
+Preparing to unpack .../03-libcamd2_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libcamd2:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libccolamd2:amd64.
+Preparing to unpack .../04-libccolamd2_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libccolamd2:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libcolamd2:amd64.
+Preparing to unpack .../05-libcolamd2_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libcolamd2:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libmetis5:amd64.
+Preparing to unpack .../06-libmetis5_5.1.0.dfsg-5_amd64.deb ...
+Unpacking libmetis5:amd64 (5.1.0.dfsg-5) ...
+Selecting previously unselected package libcholmod3:amd64.
+Preparing to unpack .../07-libcholmod3_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libcholmod3:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libcxsparse3:amd64.
+Preparing to unpack .../08-libcxsparse3_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libcxsparse3:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libglpk40:amd64.
+Preparing to unpack .../09-libglpk40_4.65-2_amd64.deb ...
+Unpacking libglpk40:amd64 (4.65-2) ...
+Selecting previously unselected package libgmpxx4ldbl:amd64.
+Preparing to unpack .../10-libgmpxx4ldbl_2%3a6.2.0+dfsg-4ubuntu0.1_amd64.deb ...
+Unpacking libgmpxx4ldbl:amd64 (2:6.2.0+dfsg-4ubuntu0.1) ...
+Selecting previously unselected package libgmp-dev:amd64.
+Preparing to unpack .../11-libgmp-dev_2%3a6.2.0+dfsg-4ubuntu0.1_amd64.deb ...
+Unpacking libgmp-dev:amd64 (2:6.2.0+dfsg-4ubuntu0.1) ...
+Selecting previously unselected package libgraphblas3:amd64.
+Preparing to unpack .../12-libgraphblas3_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libgraphblas3:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libklu1:amd64.
+Preparing to unpack .../13-libklu1_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libklu1:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libldl2:amd64.
+Preparing to unpack .../14-libldl2_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libldl2:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libmongoose2:amd64.
+Preparing to unpack .../15-libmongoose2_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libmongoose2:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libumfpack5:amd64.
+Preparing to unpack .../16-libumfpack5_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libumfpack5:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package librbio2:amd64.
+Preparing to unpack .../17-librbio2_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking librbio2:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libspqr2:amd64.
+Preparing to unpack .../18-libspqr2_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libspqr2:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libsuitesparse-dev:amd64.
+Preparing to unpack .../19-libsuitesparse-dev_1%3a5.7.1+dfsg-2_amd64.deb ...
+Unpacking libsuitesparse-dev:amd64 (1:5.7.1+dfsg-2) ...
+Selecting previously unselected package libglpk-dev:amd64.
+Preparing to unpack .../20-libglpk-dev_4.65-2_amd64.deb ...
+Unpacking libglpk-dev:amd64 (4.65-2) ...
+Setting up libgraphblas3:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libldl2:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libmetis5:amd64 (5.1.0.dfsg-5) ...
+Setting up libbtf1:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libgmpxx4ldbl:amd64 (2:6.2.0+dfsg-4ubuntu0.1) ...
+Setting up libcxsparse3:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libsuitesparseconfig5:amd64 (1:5.7.1+dfsg-2) ...
+Setting up librbio2:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libamd2:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libgmp-dev:amd64 (2:6.2.0+dfsg-4ubuntu0.1) ...
+Setting up libcolamd2:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libcamd2:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libmongoose2:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libglpk40:amd64 (4.65-2) ...
+Setting up libklu1:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libccolamd2:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libcholmod3:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libspqr2:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libumfpack5:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libsuitesparse-dev:amd64 (1:5.7.1+dfsg-2) ...
+Setting up libglpk-dev:amd64 (4.65-2) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+Removing intermediate container 6dd2b581bec8
+ ---> 0bb82e973ef4
+Step 38/40 : RUN Rscript -e 'install.packages( "pagoda2")'
+ ---> Running in 0dee3b98ad9a
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91malso installing the dependencies ‘RcppSpdlog’, ‘R.oo’, ‘R.methodsS3’, ‘pbmcapply’, ‘pROC’, ‘triebeard’, ‘dendsort’, ‘drat’, ‘N2R’, ‘R.utils’, ‘rjson’, ‘RMTstat’, ‘Rook’, ‘sccore’, ‘urltools’
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RcppSpdlog_0.0.15.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 442270 bytes (431 KB)
+=[0m[91m====[0m[91m==[0m[91m===[0m[91m=[0m[91m====[0m[91m=[0m[91m=[0m[91m====[0m[91m==[0m[91m==[0m[91m===[0m[91m=====[0m[91m=[0m[91m==[0m[91m=[0m[91m====[0m[91m====[0m[91m==[0m[91m===
+downloaded 431 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/R.oo_1.25.0.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 957163 bytes (934 KB)
+=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+downloaded 934 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/R.methodsS3_1.8.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 80594 bytes (78 KB)
+====================[0m[91m====================[0m[91m==========
+downloaded 78 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/pbmcapply_1.5.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 42862 bytes (41 KB)
+==================[0m[91m================================
+downloaded 41 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/pROC_1.18.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 830798 bytes (811 KB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m===[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m===[0m[91m==[0m[91m===[0m[91m=
+downloaded 811 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/triebeard_0.4.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 193769 bytes (189 KB)
+=====================[0m[91m====[0m[91m====[0m[91m=========[0m[91m====[0m[91m========
+downloaded 189 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/dendsort_0.3.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1168702 bytes (1.1 MB)
+[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m===[0m[91m===[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=====[0m[91m===[0m[91m===
+[0m[91mdownloaded 1.1 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/drat_0.2.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 198841 bytes (194 KB)
+====[0m[91m====[0m[91m====[0m[91m=====[0m[91m======[0m[91m=========[0m[91m==[0m[91m=====[0m[91m====[0m[91m=======
+downloaded 194 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/N2R_1.0.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 212146 bytes (207 KB)
+====[0m[91m==[0m[91m====[0m[91m==[0m[91m====[0m[91m========[0m[91m====[0m[91m===[0m[91m======[0m[91m====[0m[91m=========
+downloaded 207 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/R.utils_2.12.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1387831 bytes (1.3 MB)
+=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m============================================
+downloaded 1.3 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/rjson_0.2.21.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 221050 bytes (215 KB)
+=========[0m[91m=====[0m[91m=======[0m[91m====[0m[91m====[0m[91m====[0m[91m===[0m[91m====[0m[91m====[0m[91m===[0m[91m===
+downloaded 215 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/RMTstat_0.3.1.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 115165 bytes (112 KB)
+=======[0m[91m=======[0m[91m============[0m[91m===============[0m[91m=========
+downloaded 112 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/Rook_1.2.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 344744 bytes (336 KB)
+==[0m[91m=====[0m[91m==[0m[91m===[0m[91m====[0m[91m===[0m[91m===[0m[91m=====[0m[91m===[0m[91m===[0m[91m==[0m[91m==[0m[91m======[0m[91m==[0m[91m====[0m[91m=
+downloaded 336 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/sccore_1.0.4.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 874104 bytes (853 KB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m====[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=
+[0m[91mdownloaded 853 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/urltools_1.7.3.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 300759 bytes (293 KB)
+========================[0m[91m===[0m[91m========[0m[91m===[0m[91m====[0m[91m==[0m[91m===[0m[91m===
+downloaded 293 KB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/pagoda2_1.0.11.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1322123 bytes (1.3 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==========[0m[91m===[0m[91m====[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 1.3 MB
+
+[0m[91m* installing *binary* package ‘RcppSpdlog’ ...
+[0m[91m* DONE (RcppSpdlog)
+[0m[91m* installing *binary* package ‘R.methodsS3’ ...
+[0m[91m* DONE (R.methodsS3)
+[0m[91m* installing *binary* package ‘pbmcapply’ ...
+[0m[91m* DONE (pbmcapply)
+[0m[91m* installing *binary* package ‘pROC’ ...
+[0m[91m* DONE (pROC)
+[0m[91m* installing *binary* package ‘triebeard’ ...
+[0m[91m* DONE (triebeard)
+[0m[91m* installing *binary* package ‘dendsort’ ...
+[0m[91m* DONE (dendsort)
+[0m[91m* installing *binary* package ‘drat’ ...
+[0m[91m* DONE (drat)
+[0m[91m* installing *binary* package ‘rjson’ ...
+[0m[91m* DONE (rjson)
+[0m[91m* installing *binary* package ‘RMTstat’ ...
+[0m[91m* DONE (RMTstat)
+[0m[91m* installing *binary* package ‘Rook’ ...
+[0m[91m* DONE (Rook)
+[0m[91m* installing *binary* package ‘R.oo’ ...
+[0m[91m* DONE (R.oo)
+[0m[91m* installing *binary* package ‘N2R’ ...
+[0m[91m* DONE (N2R)
+[0m[91m* installing *binary* package ‘sccore’ ...
+[0m[91m* DONE (sccore)
+[0m[91m* installing *binary* package ‘urltools’ ...
+[0m[91m* DONE (urltools)
+[0m[91m* installing *binary* package ‘R.utils’ ...
+[0m[91m* DONE (R.utils)
+[0m[91m* installing *binary* package ‘pagoda2’ ...
+[0m[91m* DONE (pagoda2)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/RtmpKWArAH/downloaded_packages’
+[0mRemoving intermediate container 0dee3b98ad9a
+ ---> 59b0728c95b5
+Step 39/40 : RUN apt-get install -y libboost-dev libomp-dev libboost-system-dev libboost-filesystem-dev libhdf5-dev libhdf5-serial-dev
+ ---> Running in 5fadf47c8b39
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  hdf5-helpers libaec-dev libaec0 libboost-filesystem1.71-dev
+  libboost-filesystem1.71.0 libboost-system1.71-dev libboost-system1.71.0
+  libboost1.71-dev libhdf5-103 libhdf5-cpp-103 libomp-10-dev libomp5-10 libsz2
+Suggested packages:
+  libboost-doc libboost1.71-doc libboost-atomic1.71-dev
+  libboost-chrono1.71-dev libboost-container1.71-dev libboost-context1.71-dev
+  libboost-contract1.71-dev libboost-coroutine1.71-dev
+  libboost-date-time1.71-dev libboost-exception1.71-dev libboost-fiber1.71-dev
+  libboost-graph1.71-dev libboost-graph-parallel1.71-dev
+  libboost-iostreams1.71-dev libboost-locale1.71-dev libboost-log1.71-dev
+  libboost-math1.71-dev libboost-mpi1.71-dev libboost-mpi-python1.71-dev
+  libboost-numpy1.71-dev libboost-program-options1.71-dev
+  libboost-python1.71-dev libboost-random1.71-dev libboost-regex1.71-dev
+  libboost-serialization1.71-dev libboost-stacktrace1.71-dev
+  libboost-test1.71-dev libboost-thread1.71-dev libboost-timer1.71-dev
+  libboost-type-erasure1.71-dev libboost-wave1.71-dev libboost1.71-tools-dev
+  libmpfrc++-dev libntl-dev libhdf5-doc libomp-10-doc
+The following NEW packages will be installed:
+  hdf5-helpers libaec-dev libaec0 libboost-dev libboost-filesystem-dev
+  libboost-filesystem1.71-dev libboost-filesystem1.71.0 libboost-system-dev
+  libboost-system1.71-dev libboost-system1.71.0 libboost1.71-dev libhdf5-103
+  libhdf5-cpp-103 libhdf5-dev libomp-10-dev libomp-dev libomp5-10 libsz2
+0 upgraded, 18 newly installed, 0 to remove and 160 not upgraded.
+Need to get 14.4 MB of archives.
+After this operation, 167 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal/universe amd64 hdf5-helpers amd64 1.10.4+repack-11ubuntu1 [13.6 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/universe amd64 libaec0 amd64 1.0.4-1 [19.1 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal/main amd64 libboost1.71-dev amd64 1.71.0-6ubuntu6 [9,068 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal/main amd64 libboost-dev amd64 1.71.0.0ubuntu2 [3,596 B]
+Get:5 http://archive.ubuntu.com/ubuntu focal/main amd64 libboost-filesystem1.71.0 amd64 1.71.0-6ubuntu6 [242 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal/main amd64 libboost-system1.71.0 amd64 1.71.0-6ubuntu6 [205 kB]
+Get:7 http://archive.ubuntu.com/ubuntu focal/main amd64 libboost-system1.71-dev amd64 1.71.0-6ubuntu6 [205 kB]
+Get:8 http://archive.ubuntu.com/ubuntu focal/main amd64 libboost-filesystem1.71-dev amd64 1.71.0-6ubuntu6 [258 kB]
+Get:9 http://archive.ubuntu.com/ubuntu focal/main amd64 libboost-filesystem-dev amd64 1.71.0.0ubuntu2 [3,420 B]
+Get:10 http://archive.ubuntu.com/ubuntu focal/main amd64 libboost-system-dev amd64 1.71.0.0ubuntu2 [3,536 B]
+Get:11 http://archive.ubuntu.com/ubuntu focal/universe amd64 libsz2 amd64 1.0.4-1 [5,188 B]
+Get:12 http://archive.ubuntu.com/ubuntu focal/universe amd64 libhdf5-103 amd64 1.10.4+repack-11ubuntu1 [1,311 kB]
+Get:13 http://archive.ubuntu.com/ubuntu focal/universe amd64 libhdf5-cpp-103 amd64 1.10.4+repack-11ubuntu1 [120 kB]
+Get:14 http://archive.ubuntu.com/ubuntu focal/universe amd64 libaec-dev amd64 1.0.4-1 [16.9 kB]
+Get:15 http://archive.ubuntu.com/ubuntu focal/universe amd64 libhdf5-dev amd64 1.10.4+repack-11ubuntu1 [2,589 kB]
+Get:16 http://archive.ubuntu.com/ubuntu focal/universe amd64 libomp5-10 amd64 1:10.0.0-4ubuntu1 [300 kB]
+Get:17 http://archive.ubuntu.com/ubuntu focal/universe amd64 libomp-10-dev amd64 1:10.0.0-4ubuntu1 [47.7 kB]
+Get:18 http://archive.ubuntu.com/ubuntu focal/universe amd64 libomp-dev amd64 1:10.0-50~exp1 [2,824 B]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 14.4 MB in 1s (13.2 MB/s)
+Selecting previously unselected package hdf5-helpers.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 28039 files and directories currently installed.)
+Preparing to unpack .../00-hdf5-helpers_1.10.4+repack-11ubuntu1_amd64.deb ...
+Unpacking hdf5-helpers (1.10.4+repack-11ubuntu1) ...
+Selecting previously unselected package libaec0:amd64.
+Preparing to unpack .../01-libaec0_1.0.4-1_amd64.deb ...
+Unpacking libaec0:amd64 (1.0.4-1) ...
+Selecting previously unselected package libboost1.71-dev:amd64.
+Preparing to unpack .../02-libboost1.71-dev_1.71.0-6ubuntu6_amd64.deb ...
+Unpacking libboost1.71-dev:amd64 (1.71.0-6ubuntu6) ...
+Selecting previously unselected package libboost-dev:amd64.
+Preparing to unpack .../03-libboost-dev_1.71.0.0ubuntu2_amd64.deb ...
+Unpacking libboost-dev:amd64 (1.71.0.0ubuntu2) ...
+Selecting previously unselected package libboost-filesystem1.71.0:amd64.
+Preparing to unpack .../04-libboost-filesystem1.71.0_1.71.0-6ubuntu6_amd64.deb ...
+Unpacking libboost-filesystem1.71.0:amd64 (1.71.0-6ubuntu6) ...
+Selecting previously unselected package libboost-system1.71.0:amd64.
+Preparing to unpack .../05-libboost-system1.71.0_1.71.0-6ubuntu6_amd64.deb ...
+Unpacking libboost-system1.71.0:amd64 (1.71.0-6ubuntu6) ...
+Selecting previously unselected package libboost-system1.71-dev:amd64.
+Preparing to unpack .../06-libboost-system1.71-dev_1.71.0-6ubuntu6_amd64.deb ...
+Unpacking libboost-system1.71-dev:amd64 (1.71.0-6ubuntu6) ...
+Selecting previously unselected package libboost-filesystem1.71-dev:amd64.
+Preparing to unpack .../07-libboost-filesystem1.71-dev_1.71.0-6ubuntu6_amd64.deb ...
+Unpacking libboost-filesystem1.71-dev:amd64 (1.71.0-6ubuntu6) ...
+Selecting previously unselected package libboost-filesystem-dev:amd64.
+Preparing to unpack .../08-libboost-filesystem-dev_1.71.0.0ubuntu2_amd64.deb ...
+Unpacking libboost-filesystem-dev:amd64 (1.71.0.0ubuntu2) ...
+Selecting previously unselected package libboost-system-dev:amd64.
+Preparing to unpack .../09-libboost-system-dev_1.71.0.0ubuntu2_amd64.deb ...
+Unpacking libboost-system-dev:amd64 (1.71.0.0ubuntu2) ...
+Selecting previously unselected package libsz2:amd64.
+Preparing to unpack .../10-libsz2_1.0.4-1_amd64.deb ...
+Unpacking libsz2:amd64 (1.0.4-1) ...
+Selecting previously unselected package libhdf5-103:amd64.
+Preparing to unpack .../11-libhdf5-103_1.10.4+repack-11ubuntu1_amd64.deb ...
+Unpacking libhdf5-103:amd64 (1.10.4+repack-11ubuntu1) ...
+Selecting previously unselected package libhdf5-cpp-103:amd64.
+Preparing to unpack .../12-libhdf5-cpp-103_1.10.4+repack-11ubuntu1_amd64.deb ...
+Unpacking libhdf5-cpp-103:amd64 (1.10.4+repack-11ubuntu1) ...
+Selecting previously unselected package libaec-dev:amd64.
+Preparing to unpack .../13-libaec-dev_1.0.4-1_amd64.deb ...
+Unpacking libaec-dev:amd64 (1.0.4-1) ...
+Selecting previously unselected package libhdf5-dev.
+Preparing to unpack .../14-libhdf5-dev_1.10.4+repack-11ubuntu1_amd64.deb ...
+Unpacking libhdf5-dev (1.10.4+repack-11ubuntu1) ...
+Selecting previously unselected package libomp5-10:amd64.
+Preparing to unpack .../15-libomp5-10_1%3a10.0.0-4ubuntu1_amd64.deb ...
+Unpacking libomp5-10:amd64 (1:10.0.0-4ubuntu1) ...
+Selecting previously unselected package libomp-10-dev.
+Preparing to unpack .../16-libomp-10-dev_1%3a10.0.0-4ubuntu1_amd64.deb ...
+Unpacking libomp-10-dev (1:10.0.0-4ubuntu1) ...
+Selecting previously unselected package libomp-dev.
+Preparing to unpack .../17-libomp-dev_1%3a10.0-50~exp1_amd64.deb ...
+Unpacking libomp-dev (1:10.0-50~exp1) ...
+Setting up hdf5-helpers (1.10.4+repack-11ubuntu1) ...
+Setting up libboost1.71-dev:amd64 (1.71.0-6ubuntu6) ...
+Setting up libboost-filesystem1.71.0:amd64 (1.71.0-6ubuntu6) ...
+Setting up libaec0:amd64 (1.0.4-1) ...
+Setting up libomp5-10:amd64 (1:10.0.0-4ubuntu1) ...
+Setting up libboost-system1.71.0:amd64 (1.71.0-6ubuntu6) ...
+Setting up libboost-dev:amd64 (1.71.0.0ubuntu2) ...
+Setting up libsz2:amd64 (1.0.4-1) ...
+Setting up libomp-10-dev (1:10.0.0-4ubuntu1) ...
+Setting up libaec-dev:amd64 (1.0.4-1) ...
+Setting up libboost-system1.71-dev:amd64 (1.71.0-6ubuntu6) ...
+Setting up libboost-filesystem1.71-dev:amd64 (1.71.0-6ubuntu6) ...
+Setting up libhdf5-103:amd64 (1.10.4+repack-11ubuntu1) ...
+Setting up libboost-filesystem-dev:amd64 (1.71.0.0ubuntu2) ...
+Setting up libomp-dev (1:10.0-50~exp1) ...
+Setting up libboost-system-dev:amd64 (1.71.0.0ubuntu2) ...
+Setting up libhdf5-cpp-103:amd64 (1.10.4+repack-11ubuntu1) ...
+Setting up libhdf5-dev (1.10.4+repack-11ubuntu1) ...
+update-alternatives: using /usr/lib/x86_64-linux-gnu/pkgconfig/hdf5-serial.pc to provide /usr/lib/x86_64-linux-gnu/pkgconfig/hdf5.pc (hdf5.pc) in auto mode
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+Removing intermediate container 5fadf47c8b39
+ ---> 86ae33248c94
+Step 40/40 : RUN Rscript -e 'devtools::install_github("velocyto-team/velocyto.R")'
+ ---> Running in 966600a72086
+[91mDownloading GitHub repo velocyto-team/velocyto.R@HEAD
+[0mbit   (4.0.4   -> 4.0.5 ) [CRAN]
+Rcpp  (1.0.8.3 -> 1.0.11) [CRAN]
+hdf5r (NA      -> 1.3.8 ) [CRAN]
+[91mSkipping 1 packages not available: pcaMethods
+[0m[91mInstalling 3 packages: bit, Rcpp, hdf5r
+[0m[91mInstalling packages into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/bit_4.0.5.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 1122042 bytes (1.1 MB)
+=[0m[91m=[0m[91m===[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=====[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m===[0m[91m=[0m[91m=
+[0m[91mdownloaded 1.1 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/Rcpp_1.0.11.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2141319 bytes (2.0 MB)
+[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=[0m[91m==[0m[91m=[0m[91m=
+downloaded 2.0 MB
+
+[0m[91mtrying URL 'https://packagemanager.rstudio.com/cran/__linux__/focal/latest/src/contrib/hdf5r_1.3.8.tar.gz'
+[0m[91mContent type 'binary/octet-stream' length 2345026 bytes (2.2 MB)
+[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=[0m[91m=
+[0m[91mdownloaded 2.2 MB
+
+[0m[91m* installing *binary* package ‘bit’ ...
+[0m[91m* DONE (bit)
+[0m[91m* installing *binary* package ‘Rcpp’ ...
+[0m[91m* DONE (Rcpp)
+[0m[91m* installing *binary* package ‘hdf5r’ ...
+[0m[91m* DONE (hdf5r)
+[0m[91m
+The downloaded source packages are in
+	‘/tmp/Rtmpz6D9sL/downloaded_packages’
+[0m* checking for file ‘/tmp/Rtmpz6D9sL/remotes75567db4b/velocyto-team-velocyto.R-83e6ed9/DESCRIPTION’ ... OK
+* preparing ‘velocyto.R’:
+* checking DESCRIPTION meta-information ... OK
+* cleaning src
+* checking for LF line-endings in source and make files and shell scripts
+* checking for empty or unneeded directories
+* building ‘velocyto.R_0.6.tar.gz’
+
+[91mInstalling package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+[0m[91m* installing *source* package ‘velocyto.R’ ...
+[0m[91m** using staged installation
+[0m[91m** libs
+[0mg++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppArmadillo/include' -I/usr/local/include  -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppArmadillo/include' -I/usr/local/include  -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c points_within.cpp -o points_within.o
+g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppArmadillo/include' -I/usr/local/include  -fopenmp -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c routines.cpp -o routines.o
+g++ -std=gnu++11 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o velocyto.R.so RcppExports.o points_within.o routines.o -lboost_filesystem -lboost_system -lstdc++ -llapack -lblas -fopenmp -lgfortran -lm -lquadmath -L/usr/local/lib/R/lib -lR
+[91minstalling to /usr/local/lib/R/site-library/00LOCK-velocyto.R/00new/velocyto.R/libs
+[0m[91m** R
+[0m[91m** byte-compile and prepare package for lazy loading
+[0m[91m** help
+[0m[91m*** installing help indices
+[0m[91m** building package indices
+[0m[91m** testing if installed package can be loaded from temporary location
+[0m[91m** checking absolute paths in shared objects and dynamic libraries
+[0m[91m** testing if installed package can be loaded from final location
+[0m[91m** testing if installed package keeps a record of temporary installation path
+[0m[91m* DONE (velocyto.R)
+[0mRemoving intermediate container 966600a72086
+ ---> 32ec35f1007c
+Successfully built 32ec35f1007c
+Successfully tagged bmmlab_prostatebmshdp_velocyto:latest
