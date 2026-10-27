@@ -1,8 +1,8 @@
-# High-resolution immune atlas of murine healthy prostate and prostate cancer from neoplasia to adenocarcinoma stage in the inducible PTEN(i)pe-/- mice
+# Characterization of the immune landscape in healthy mouse prostate and during prostate cancer progression 
 
 ## Article information
 
-**Title:** High-resolution immune atlas of murine healthy prostate and prostate cancer from neoplasia to adenocarcinoma stage in the inducible PTEN(i)pe-/- mice
+**Title:** Characterization of the immune landscape in healthy mouse prostate and during prostate cancer progression 
 
 **Authors:** 
 Despoina Pervizou1, Joanna De Chiara1, Lionel Spinelli1, Lionel Chasson1, Frédéric Fiore, Marc Bajénoff1, Bernard Malissen1, Daniel Metzger, Gilles Laverny and Sandrine Henri1&
@@ -14,7 +14,7 @@ Despoina Pervizou1, Joanna De Chiara1, Lionel Spinelli1, Lionel Chasson1, Fréd�
 **Summary:**
 To establish a high-resolution immune atlas of healthy prostate and prostate cancer we performed scRNA-seq on sorted tissue-resident CD45+ immune cells from the inducible adult PTEN(i)pe-/- mice at the Prostatic Intraepithelial Neoplasia stage (PIN) and Adenocarcinoma stages, and age-matched healthy PTENL2/L2 control mice at 3 months and 9 months post-tamoxifen administration respectively. A few minutes prior sacrifice, mice were injected intravenously with fluorescent anti-CD45.2 antibodies to perform blood/tissue partitioning, allowing to exclude cells present in the vasculature and ensure to study solely of the immune cells present in prostate parenchyma. Cells were extracted from DLV prostate lobes by enzymatic digestion. Prostate samples from three PTEN(i)pe−/− mice at 3 months post-tamoxifen were pooled prior to sorting. Similarly, prostate samples from five  sex-matched PTENL2/L2 control littermates at 3 months post-tamoxifen were also pooled prior to sorting. The same approach was applied for the 9 months samples of PTEN(i)pe−/− and control mice respectively. Tissue resident CD45+ immune cells were sorted by fluorescence-activated cell sorting (FACS). As we found previously that neutrophils were prevalent within the leukocyte infiltrate from PIN to adenocarcinoma stages of Pten(i)pe−/−prostate, neutrophils were sorted separately from the other CD45+ immune cells and cells were mixed again at a ratio of 25% neutrophils to 75% CD45+ non-neutrophil immune cells prior 10X Genomics Chromium System encapsulation and scRNA sequencing. We included 8 independent samples encompassing 2 replicates of PtenL2/L2 control at 3 months, PtenL2/L2 control at 9 months, Pten(i)pe−/− at 3 months PIN and Pten(i)pe−/− at 9 months adenocarcinoma. 
 
-**DOI:**
+**DOI: 10.1080/2162402X.2025.2562220 **
 
 ---
 
